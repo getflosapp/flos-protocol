@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RPE Scale for Lifting — RIR & Estimated 1RM Calculator | FLOS Protocol</title>
+<meta name="description" content="Free interactive RPE scale: convert Rate of Perceived Exertion to reps-in-reserve and estimated 1RM. Know exactly how hard your working sets should feel — with the validation research.">
+<link rel="canonical" href="https://flos-protocol.vercel.app/tools/rpe-scale/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FLOS Protocol">
+<meta property="og:title" content="RPE Scale & Estimated 1RM Calculator — free | FLOS Protocol">
+<meta property="og:description" content="Turn 'how hard did that feel?' into reps-in-reserve and an estimated 1RM. Validated autoregulation, free, no signup.">
+<meta property="og:url" content="https://flos-protocol.vercel.app/tools/rpe-scale/">
+<meta property="og:image" content="https://flos-protocol.vercel.app/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16.png">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "WebApplication", "name": "FLOS RPE Scale & Estimated 1RM Calculator",
+      "url": "https://flos-protocol.vercel.app/tools/rpe-scale/",
+      "applicationCategory": "HealthApplication", "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "description": "Interactive RPE (rating of perceived exertion) scale mapping to reps-in-reserve (RIR) and estimated one-rep max for resistance training." },
+    { "@type": "FAQPage", "mainEntity": [
+      { "@type": "Question", "name": "What RPE should my working sets be?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Most hypertrophy and strength programming lives at RPE 7-9: hard sets with 1-3 reps in reserve. RPE 6 and below is warm-up territory for working weights; RPE 10 means no reps left and is reserved for testing, not training." } },
+      { "@type": "Question", "name": "Is RPE accurate enough to program with?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Validated in resistance-training research: Zourdos et al. (2016) showed the repetitions-in-reserve-based RPE scale tracks actual proximity to failure closely enough to autoregulate load, and experienced lifters estimate RIR within about one rep." } },
+      { "@type": "Question", "name": "Do I ever need to test my 1RM?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Estimate it from any hard set: weight, reps, and RPE convert to an estimated 1RM through standard percentage tables. Submaximal estimates are safer, better recovered from, and accurate enough to program from." } }
+    ] }
+  ]
+}
+</script>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root { --bg:#0a0a0f; --card:#0d0d16; --elev:#12121c; --text:#f4f4fa; --dim:#a0a0b4; --faint:#5a5a70;
+    --gold:#a259ff; --gold-hi:#cf9fff; --gold-lo:#7c3aed; --teal:#00c9a7; --line:rgba(255,255,255,.10); --ease:cubic-bezier(.16,1,.3,1); }
+  body { font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:var(--bg); color:var(--text); min-height:100vh; -webkit-font-smoothing:antialiased; }
+  ::selection { background:rgba(162,89,255,.30); }
+  .topbar { display:flex; align-items:center; justify-content:space-between; gap:14px; max-width:760px; margin:0 auto; padding:22px 22px 18px; border-bottom:1px solid var(--line); }
+  .brand { display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--text); }
+  .brand-logo { width:38px; height:38px; border-radius:10px; box-shadow:0 2px 16px rgba(0,201,167,.20); }
+  .wordmark b { font-size:15px; font-weight:800; letter-spacing:.18em; display:block; line-height:1.1; }
+  .wordmark b::after { content:' PROTOCOL'; font-weight:300; color:var(--dim); letter-spacing:.22em; }
+  .wordmark em { font-style:normal; font-size:8.5px; letter-spacing:.24em; color:var(--gold-lo); font-weight:600; }
+  .top-cta { font-size:12.5px; font-weight:600; text-decoration:none; color:var(--gold-hi); border:1px solid rgba(162,89,255,.35); border-radius:10px; padding:9px 16px; white-space:nowrap; }
+  .top-cta:hover { border-color:var(--gold); background:rgba(162,89,255,.08); }
+  main { max-width:760px; margin:0 auto; padding:clamp(28px,6vw,56px) 22px 40px; }
+  .badge { display:inline-flex; align-items:center; gap:9px; padding:8px 19px; border-radius:100px; font-size:10.5px; font-weight:700; letter-spacing:.19em; text-transform:uppercase; color:var(--teal); border:1px solid rgba(0,201,167,.30); }
+  .badge::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--teal); }
+  h1 { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(32px,5.5vw,48px); line-height:1.14; margin:26px 0 16px; }
+  h1 em { font-style:italic; color:var(--gold-hi); }
+  .sub { font-size:15.5px; font-weight:300; line-height:1.8; color:var(--dim); max-width:580px; }
+  .sub strong { color:var(--text); font-weight:600; }
+  .tool { margin-top:30px; background:var(--card); border:1px solid transparent; border-radius:20px; padding:clamp(22px,4vw,34px);
+    background:linear-gradient(var(--card),var(--card)) padding-box, linear-gradient(160deg, rgba(238,217,172,.22), rgba(238,217,172,.05) 42%, rgba(238,217,172,.13)) border-box; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .field label { display:block; font-size:10.5px; font-weight:700; color:var(--dim); text-transform:uppercase; letter-spacing:.11em; margin-bottom:9px; }
+  .field input { width:100%; padding:15px 16px; background:var(--elev); border:1px solid rgba(235,220,190,.10); border-radius:12px; color:var(--text); font-size:16px; font-family:'Inter',sans-serif; }
+  .field input:focus { outline:none; border-color:var(--gold); box-shadow:0 0 0 4px rgba(162,89,255,.12); }
+  .slider-row { grid-column:1/-1; }
+  .slider-head { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px; }
+  .slider-head label { font-size:10.5px; font-weight:700; color:var(--dim); text-transform:uppercase; letter-spacing:.11em; }
+  .slider-head .sv { font-size:22px; font-weight:800; color:var(--gold-hi); font-variant-numeric:tabular-nums; }
+  input[type=range] { width:100%; appearance:none; -webkit-appearance:none; height:6px; border-radius:4px; background:linear-gradient(90deg, #4a9e6e, #f0c040, #c94a4a); outline:none; }
+  input[type=range]::-webkit-slider-thumb { appearance:none; -webkit-appearance:none; width:24px; height:24px; border-radius:50%; background:var(--text); border:3px solid var(--gold); cursor:pointer; box-shadow:0 2px 12px rgba(0,0,0,.5); }
+  input[type=range]::-moz-range-thumb { width:24px; height:24px; border-radius:50%; background:var(--text); border:3px solid var(--gold); cursor:pointer; }
+  .slider-labels { display:flex; justify-content:space-between; font-size:10px; color:var(--faint); margin-top:8px; letter-spacing:.05em; }
+  .results { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:24px; }
+  .ecard { background:var(--elev); border:1px solid rgba(235,220,190,.08); border-radius:14px; padding:19px 18px; }
+  .ecard .el { font-size:10px; font-weight:700; letter-spacing:.13em; text-transform:uppercase; color:var(--faint); margin-bottom:9px; }
+  .ecard .ev { font-size:24px; font-weight:800; font-variant-numeric:tabular-nums; }
+  .ecard .ev span { font-size:11px; font-weight:500; color:var(--faint); }
+  .ecard .eu { font-size:11px; color:var(--dim); margin-top:6px; line-height:1.55; font-weight:300; }
+  .ecard.gold { border:1px solid transparent; background:linear-gradient(rgba(162,89,255,.06),rgba(162,89,255,.06)) padding-box, linear-gradient(150deg, rgba(238,217,172,.35), rgba(238,217,172,.08) 50%, rgba(238,217,172,.18)) border-box; }
+  .ecard.gold .ev { color:var(--gold-hi); }
+  .toolnote { font-size:11.5px; color:var(--faint); margin-top:16px; line-height:1.7; }
+  section.content { margin-top:48px; }
+  h2 { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(22px,3.6vw,30px); line-height:1.25; margin-bottom:14px; }
+  h2 em { font-style:italic; color:var(--gold-hi); }
+  .content p { font-size:14.5px; font-weight:300; line-height:1.85; color:var(--dim); margin:0 0 14px; max-width:680px; }
+  .content p b, .content p strong { color:var(--text); font-weight:600; }
+  .rpe-table { margin:18px 0 22px; border:1px solid var(--line); border-radius:16px; overflow:hidden; }
+  .rpe-row { display:grid; grid-template-columns:64px 74px 1fr; gap:10px; align-items:center; padding:12px 18px; border-top:1px solid rgba(235,220,190,.06); font-size:13.5px; transition:background .3s; }
+  .rpe-row:first-child { border-top:none; }
+  .rpe-row.head { background:var(--elev); font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--faint); }
+  .rpe-row .rp { font-weight:800; font-variant-numeric:tabular-nums; }
+  .rpe-row .rr { color:var(--dim); font-variant-numeric:tabular-nums; }
+  .rpe-row .ds { color:var(--dim); font-weight:300; line-height:1.5; }
+  .rpe-row.hl { background:rgba(162,89,255,.08); }
+  .rpe-row.hl .rp { color:var(--gold-hi); }
+  details { background:var(--card); border:1px solid rgba(235,220,190,.09); border-radius:14px; margin-bottom:10px; }
+  summary { cursor:pointer; list-style:none; padding:17px 19px; font-size:14px; font-weight:600; display:flex; justify-content:space-between; align-items:center; gap:14px; }
+  summary::-webkit-details-marker { display:none; }
+  summary::after { content:'+'; color:var(--gold); font-weight:700; font-size:17px; }
+  details[open] summary::after { transform:rotate(45deg); }
+  details p { padding:0 19px 17px; font-size:13px; color:var(--dim); line-height:1.75; margin:0; }
+  .reflist { margin:0; padding:0; list-style:none; }
+  .reflist li { position:relative; padding:12px 0 12px 40px; border-bottom:1px solid rgba(235,220,190,.06); font-size:12.5px; color:var(--dim); line-height:1.65; }
+  .reflist li b { color:var(--gold-lo); position:absolute; left:0; top:12px; font-size:11px; }
+  .reflist i { color:var(--dim); }
+  .reflist a { color:var(--gold); text-decoration:none; border-bottom:1px dotted rgba(162,89,255,.4); }
+  .cta-box { margin-top:44px; text-align:center; padding:34px 26px; border-radius:20px; border:1px solid transparent;
+    background:linear-gradient(180deg, rgba(162,89,255,.07), rgba(162,89,255,.02)) padding-box, linear-gradient(160deg, rgba(238,217,172,.5), rgba(238,217,172,.1) 40%, rgba(238,217,172,.3)) border-box; }
+  .cta-box .ck { font-size:10.5px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); }
+  .cta-box h3 { font-family:'Space Grotesk',sans-serif; font-size:24px; font-weight:700; margin:12px 0 8px; }
+  .cta-box p { font-size:13.5px; color:var(--dim); line-height:1.7; max-width:440px; margin:0 auto 20px; font-weight:300; }
+  .cta-btn { display:inline-block; padding:16px 30px; border-radius:13px; text-decoration:none; font-size:14.5px; font-weight:800; color:#fff; background:linear-gradient(135deg, var(--gold), var(--gold-lo)); }
+  .cta-tools { margin-top:22px; font-size:12px; letter-spacing:.05em; }
+  .cta-tools a { color:var(--gold); text-decoration:none; margin:0 8px; border-bottom:1px dotted rgba(162,89,255,.4); }
+  footer { max-width:760px; margin:0 auto; padding:28px 22px 42px; border-top:1px solid var(--line); }
+  footer p { font-size:11.5px; color:var(--faint); line-height:1.7; }
+  @media (max-width:640px){ .grid2{grid-template-columns:1fr;} .results{grid-template-columns:1fr;} .top-cta{display:none;} }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="https://flos-protocol.vercel.app/audit/">
+    <img class="brand-logo" src="../../icon-512.png" alt="FLOS Protocol logo" width="38" height="38">
+    <span class="wordmark"><b>FLOS</b><em>SCIENCE · METABOLISM · TRANSFORMATION</em></span>
+  </a>
+  <a class="top-cta" href="https://flos-protocol.vercel.app/audit/">← Back to the Audit</a>
+</header>
+
+<main>
+  <span class="badge">Free tool · Evidence-based</span>
+  <h1>The RPE <em>scale</em></h1>
+  <p class="sub"><strong>Rate of Perceived Exertion</strong> turns "how hard did that set feel?" into a number you can program with — reps-in-reserve (RIR), intensity zones, and an estimated 1RM, no max-out attempts required.</p>
+
+  <div class="tool">
+    <div class="grid2">
+      <div class="field"><label for="weight">Weight lifted (kg)</label><input type="number" id="weight" inputmode="decimal" placeholder="100" min="1" max="500" oninput="calc()"></div>
+      <div class="field"><label for="reps">Reps performed</label><input type="number" id="reps" inputmode="numeric" placeholder="5" min="1" max="12" oninput="calc()"></div>
+      <div class="slider-row">
+        <div class="slider-head"><label>How hard did it feel? (RPE)</label><span class="sv" id="rpe-val">8</span></div>
+        <input type="range" id="rpe" min="6" max="10" step="0.5" value="8" oninput="calc()">
+        <div class="slider-labels"><span>6 · easy</span><span>7</span><span>8</span><span>9</span><span>10 · max</span></div>
+      </div>
+    </div>
+
+    <div class="results">
+      <div class="ecard"><div class="el">Reps in reserve (RIR)</div><div class="ev" id="r-rir">2</div><div class="eu">How many good reps you had left in the tank.</div></div>
+      <div class="ecard"><div class="el">Set intensity</div><div class="ev" id="r-pct">—</div><div class="eu" id="r-pct-u">Approximate % of your 1RM this set represents.</div></div>
+      <div class="ecard gold" style="grid-column:1/-1;"><div class="el">Estimated 1RM</div><div class="ev" id="r-e1rm">—</div><div class="eu" id="r-e1rm-u">Enter weight and reps — your estimated one-rep max appears here. No testing day needed.</div></div>
+    </div>
+    <p class="toolnote">Estimates use standard repetitions-to-failure percentage tables. Computed locally — nothing is stored or sent anywhere.</p>
+  </div>
+
+  <section class="content">
+    <h2>Reading the <em>scale</em></h2>
+    <p>RPE 10 is failure — nothing left. Every half-point below that is roughly half a rep in reserve. The highlighted row follows your slider above.</p>
+    <div class="rpe-table" id="rpe-table">
+      <div class="rpe-row head"><div class="rp">RPE</div><div class="rr">RIR</div><div class="ds">What it means in practice</div></div>
+      <div class="rpe-row" data-rpe="10"><div class="rp">10</div><div class="rr">0</div><div class="ds">Absolute max — could not do one more clean rep. Testing territory, not training.</div></div>
+      <div class="rpe-row" data-rpe="9.5"><div class="rp">9.5</div><div class="rr">0–1</div><div class="ds">Maybe one more rep, maybe not. Grinder territory.</div></div>
+      <div class="rpe-row" data-rpe="9"><div class="rp">9</div><div class="rr">1</div><div class="ds">One clean rep left. Heaviest normal working sets live here.</div></div>
+      <div class="rpe-row" data-rpe="8.5"><div class="rp">8.5</div><div class="rr">1–2</div><div class="ds">One, honestly maybe two reps left.</div></div>
+      <div class="rpe-row" data-rpe="8"><div class="rp">8</div><div class="rr">2</div><div class="ds">Two reps left. The sweet spot for most hard training.</div></div>
+      <div class="rpe-row" data-rpe="7.5"><div class="rp">7.5</div><div class="rr">2–3</div><div class="ds">Solid work, clearly not maximal. Volume days.</div></div>
+      <div class="rpe-row" data-rpe="7"><div class="rp">7</div><div class="rr">3</div><div class="ds">Three left. Technique practice, back-off sets, high-frequency work.</div></div>
+      <div class="rpe-row" data-rpe="6.5"><div class="rp">6.5</div><div class="rr">3–4</div><div class="ds">Challenging but far from failure.</div></div>
+      <div class="rpe-row" data-rpe="6"><div class="rp">6</div><div class="rr">4+</div><div class="ds">Warm-up weight for working sets. Speed and groove.</div></div>
+    </div>
+
+    <h2>Why log one number after every <em>set</em></h2>
+    <p>Progressive overload — measurably harder sessions over weeks — is the core driver of continued adaptation in position-stand guidelines.<span style="color:var(--gold); font-size:11px;"> [3]</span> The catch: you cannot prove progression you never recorded. Logging RPE after each working set is the lowest-friction way to make effort <b>visible and comparable across weeks</b> — and the repetitions-in-reserve form of the scale was validated for exactly this purpose.<span style="color:var(--gold); font-size:11px;"> [1][2]</span></p>
+    <p>It also autoregulates you: on a slept-badly day, an RPE 8 set simply means less weight — the stimulus stays on target instead of the number on the bar bullying you into junk volume or injury.</p>
+  </section>
+
+  <section class="content">
+    <h2>Questions, <em>answered straight</em></h2>
+    <details><summary>What RPE should my working sets be?</summary><p>Most strength and hypertrophy work lives at <b>RPE 7–9</b> (1–3 reps in reserve). Below 7 is warm-up territory for working weights; RPE 10 is for testing, not training — failure costs recovery without extra growth stimulus.</p></details>
+    <details><summary>Is RPE accurate enough to program with?</summary><p>Yes — especially in the RIR form. Zourdos et al. validated the reps-in-reserve-based scale against actual proximity to failure, and experienced lifters estimate RIR within about one rep.<span style="color:var(--gold); font-size:11px;"> [1][2]</span> It gets more accurate the more consistently you log it.</p></details>
+    <details><summary>Do I ever need to test my true 1RM?</summary><p>No. Take any hard set — say 100 kg × 5 at RPE 8 (2 RIR, so ~7 reps to failure ≈ 81%): estimated 1RM ≈ 123 kg. Submaximal estimates are safer, recover faster, and are accurate enough to program from.</p></details>
+  </section>
+
+  <section class="content">
+    <h2>References</h2>
+    <ol class="reflist">
+      <li><b>01</b>Zourdos MC, Klemp A, Dolan C, et al. "Novel resistance training–specific rating of perceived exertion scale measuring repetitions in reserve." <i>Journal of Strength and Conditioning Research</i>, 2016. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Novel+resistance+training-specific+rating+of+perceived+exertion+scale+measuring+repetitions+in+reserve" target="_blank" rel="noopener">PubMed ↗</a></li>
+      <li><b>02</b>Helms ER, Storey A, Cross MR, et al. "RPE and velocity relationships for the back squat, bench press, and deadlift in powerlifters." <i>J Strength Cond Res</i>, 2017. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Helms+RPE+velocity+back+squat+bench+press+deadlift+powerlifters" target="_blank" rel="noopener">PubMed ↗</a></li>
+      <li><b>03</b>Ratamess NA, et al. (American College of Sports Medicine). "Progression models in resistance training for healthy adults." <i>Medicine &amp; Science in Sports &amp; Exercise</i>, 2009. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Progression+models+in+resistance+training+for+healthy+adults" target="_blank" rel="noopener">PubMed ↗</a></li>
+    </ol>
+  </section>
+
+  <div class="cta-box">
+    <div class="ck">This is one pillar of four</div>
+    <h3>RPE is <em>Load</em>. What about the other three?</h3>
+    <p>Flow, Output, and Sustain decide whether your hard sessions ever compound into results. Score your whole system in 90 seconds — free, instant.</p>
+    <a class="cta-btn" href="https://flos-protocol.vercel.app/audit/?utm_source=tool&utm_medium=rpe">Take the Readiness Audit →</a>
+    <div class="cta-tools">More free tools: <a href="../tdee/">TDEE Calculator</a> · <a href="../protein-target/">Protein Target</a></div>
+  </div>
+</main>
+
+<footer><p>Educational tool using standard percentage tables — not medical advice. Consult a qualified professional before changing your training. © 2026 FLOS Protocol by MJRevz.</p></footer>
+
+<script>
+/* %1RM at given total reps-to-failure (Tuchscherer-style table) */
+const PCT = [100, 95.5, 92.2, 89.2, 86.3, 83.7, 81.1, 78.6, 76.2, 74.0, 71.8, 69.7];
+function num(id){ const v = parseFloat(document.getElementById(id).value); return isFinite(v) ? v : null; }
+function calc(){
+  const rpe = parseFloat(document.getElementById('rpe').value);
+  const w = num('weight'), reps = num('reps');
+  document.getElementById('rpe-val').textContent = rpe;
+  const rir = 10 - rpe;
+  document.getElementById('r-rir').textContent = (rir % 1 === 0) ? rir : rir.toFixed(1);
+  document.querySelectorAll('#rpe-table .rpe-row[data-rpe]').forEach(row => {
+    row.classList.toggle('hl', parseFloat(row.dataset.rpe) === rpe);
+  });
+  if (!w || !reps || reps < 1 || reps > 12) {
+    document.getElementById('r-pct').textContent = '—';
+    document.getElementById('r-e1rm').innerHTML = '—';
+    return;
+  }
+  const total = Math.min(12, Math.max(1, Math.round(reps + rir)));
+  const pct = PCT[total - 1];
+  const e1rm = w * 100 / pct;
+  document.getElementById('r-pct').textContent = pct.toFixed(1) + '%';
+  document.getElementById('r-pct-u').textContent = '≈ ' + total + ' reps possible at failure with this weight.';
+  document.getElementById('r-e1rm').innerHTML = Math.round(e1rm) + ' <span>kg</span>';
+  document.getElementById('r-e1rm-u').textContent = 'From ' + w + ' kg × ' + reps + ' reps @ RPE ' + rpe + '. Program off this — no max-out day needed.';
+}
+calc();
+</script>
+</body>
+</html>

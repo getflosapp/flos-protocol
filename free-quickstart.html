@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free FLOS Quickstart Card (Sample) — Morning Flow Protocol + Week 1 Focus</title>
+<meta name="description" content="Free printable sample from the FLOS Protocol: the 5-minute Morning Flow Protocol and your Week-1 focus list. The full Quickstart Card — RPE scale, macro targets, daily checklist — is inside the paid system.">
+<link rel="canonical" href="https://flos-protocol.vercel.app/free-quickstart.html">
+<meta name="robots" content="index, follow">
+
+<!-- Social -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="FLOS Protocol">
+<meta property="og:title" content="Free FLOS Quickstart Card (Sample) — Morning Flow + Week 1">
+<meta property="og:description" content="Print this. Keep it visible. The free week-one anchor from the FLOS Protocol — Morning Flow Protocol and Week-1 focus.">
+<meta property="og:url" content="https://flos-protocol.vercel.app/free-quickstart.html">
+<meta property="og:image" content="https://flos-protocol.vercel.app/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free FLOS Quickstart Card (Sample)">
+<meta name="twitter:description" content="Print this. Keep it visible. The free week-one anchor from the FLOS Protocol.">
+<meta name="twitter:image" content="https://flos-protocol.vercel.app/og-image.jpg">
+
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg:#0a0a0f; --card:#0d0d16; --elev:#12121c;
+    --text:#f4f4fa; --dim:#a0a0b4; --faint:#5a5a70;
+    --gold:#a259ff; --gold-hi:#cf9fff; --gold-lo:#7c3aed;
+    --teal:#00c9a7;
+    --line:rgba(255,255,255,.10);
+    --ease:cubic-bezier(.16,1,.3,1);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    background:var(--bg); color:var(--text);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    font-size:16px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection { background:rgba(162,89,255,.28); }
+
+  /* ============ TOPBAR ============ */
+  .topbar {
+    display:flex; align-items:center; justify-content:space-between; gap:14px;
+    max-width:920px; margin:0 auto; padding:22px 22px 18px;
+    border-bottom:1px solid var(--line);
+  }
+  .brand { display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--text); }
+  .brand-logo { width:38px; height:38px; border-radius:10px; display:block; box-shadow:0 2px 16px rgba(0,201,167,.20); }
+  .wordmark { display:flex; flex-direction:column; line-height:1.1; }
+  .wordmark b { font-size:15px; font-weight:800; letter-spacing:.18em; }
+  .wordmark b::after { content:' PROTOCOL'; font-weight:300; color:var(--dim); letter-spacing:.22em; }
+  .wordmark em {
+    font-style:normal; font-size:8.5px; letter-spacing:.24em; color:var(--gold-lo);
+    margin-top:3px; font-weight:600;
+  }
+  .top-cta {
+    font-size:12.5px; font-weight:600; letter-spacing:.06em; text-decoration:none;
+    color:var(--gold-hi); border:1px solid rgba(162,89,255,.35); border-radius:10px;
+    padding:9px 16px; transition:border-color .25s var(--ease), background .25s var(--ease);
+    white-space:nowrap;
+  }
+  .top-cta:hover { border-color:var(--gold); background:rgba(162,89,255,.08); }
+
+  main { max-width:920px; margin:0 auto; padding:clamp(30px,6vw,64px) 22px 40px; }
+
+  /* ============ HERO ============ */
+  .free-badge {
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:10.5px; font-weight:700; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--teal); border:1px solid rgba(0,201,167,.32); border-radius:999px;
+    padding:7px 16px; margin-bottom:26px;
+  }
+  .free-badge .dot { width:6px; height:6px; border-radius:50%; background:var(--teal); box-shadow:0 0 10px rgba(0,201,167,.8); }
+  h1 {
+    font-family:'Space Grotesk',sans-serif; font-weight:700;
+    font-size:clamp(34px,6vw,54px); line-height:1.08; letter-spacing:-.01em;
+    max-width:15ch;
+  }
+  h1 em { font-style:italic; color:var(--gold-hi); }
+  .sub { margin-top:18px; max-width:56ch; color:var(--dim); font-size:16.5px; }
+  .sub b { color:var(--text); font-weight:600; }
+  .hero-actions { margin-top:28px; display:flex; flex-wrap:wrap; gap:12px; }
+  .btn-print {
+    display:inline-flex; align-items:center; gap:9px; cursor:pointer;
+    font-family:'Inter',sans-serif; font-size:13.5px; font-weight:700; letter-spacing:.05em;
+    color:#fff; background:linear-gradient(135deg,var(--gold),var(--gold-lo));
+    border:none; border-radius:12px; padding:14px 26px;
+    transition:transform .25s var(--ease), box-shadow .25s var(--ease);
+  }
+  .btn-print:hover { transform:translateY(-2px); box-shadow:0 10px 30px rgba(162,89,255,.22); }
+  .btn-ghost {
+    display:inline-flex; align-items:center; gap:8px; text-decoration:none;
+    font-size:13.5px; font-weight:600; letter-spacing:.05em; color:var(--text);
+    border:1px solid var(--line); border-radius:12px; padding:14px 22px;
+    transition:border-color .25s var(--ease);
+  }
+  .btn-ghost:hover { border-color:rgba(162,89,255,.4); }
+
+  /* ============ CARD SECTIONS ============ */
+  .card {
+    margin-top:34px; background:var(--card); border:1px solid var(--line);
+    border-radius:20px; padding:clamp(24px,4.5vw,40px);
+    position:relative; overflow:hidden;
+  }
+  .card::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:1px;
+    background:linear-gradient(90deg,transparent,rgba(0,201,167,.55),rgba(162,89,255,.55),transparent);
+  }
+  .card-kicker {
+    font-size:10.5px; font-weight:700; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--gold); display:flex; align-items:center; gap:10px; margin-bottom:8px;
+  }
+  .card-kicker .ico { font-size:15px; letter-spacing:0; }
+  .card h2 {
+    font-family:'Space Grotesk',sans-serif; font-weight:700;
+    font-size:clamp(23px,3.4vw,30px); line-height:1.15; margin-bottom:6px;
+  }
+  .card .dur { color:var(--faint); font-size:13px; font-weight:500; }
+  .steps { margin-top:24px; display:flex; flex-direction:column; gap:0; }
+  .step {
+    display:flex; gap:18px; padding:17px 2px;
+    border-top:1px solid var(--line); align-items:flex-start;
+  }
+  .step .num {
+    font-family:'Space Grotesk',sans-serif; font-style:italic; font-size:21px;
+    color:var(--gold-hi); min-width:26px; padding-top:1px;
+  }
+  .step p { font-size:15.5px; color:var(--text); font-weight:400; max-width:60ch; }
+  .step p b { font-weight:600; }
+  .step p span.t { color:var(--faint); font-size:12px; display:block; margin-top:3px; letter-spacing:.08em; text-transform:uppercase; font-weight:600; }
+
+  .checks { margin-top:24px; display:flex; flex-direction:column; gap:0; list-style:none; }
+  .checks li {
+    display:flex; gap:14px; padding:15px 2px; border-top:1px solid var(--line);
+    font-size:15.5px; align-items:flex-start;
+  }
+  .checks li::before {
+    content:'✓'; color:var(--teal); font-weight:800; font-size:15px; padding-top:2px;
+    min-width:18px;
+  }
+  .checks li b { font-weight:600; }
+  .checks li span.t { color:var(--faint); font-size:12px; display:block; margin-top:3px; letter-spacing:.08em; text-transform:uppercase; font-weight:600; }
+
+  /* ============ QUOTE ============ */
+  .quote {
+    margin-top:34px; text-align:center; padding:20px 24px 6px;
+  }
+  .quote p {
+    font-family:'Space Grotesk',sans-serif; font-style:italic;
+    font-size:clamp(20px,3.4vw,27px); line-height:1.35; color:var(--gold-hi);
+    max-width:30ch; margin:0 auto;
+  }
+  .quote cite {
+    display:block; margin-top:14px; font-style:normal; font-family:'Inter',sans-serif;
+    font-size:11px; letter-spacing:.26em; text-transform:uppercase; color:var(--faint); font-weight:600;
+  }
+
+  /* ============ LOCKED PANEL ============ */
+  .locked {
+    margin-top:40px; border:1px dashed rgba(162,89,255,.38); border-radius:20px;
+    padding:clamp(24px,4.5vw,38px); background:linear-gradient(180deg,rgba(162,89,255,.05),transparent 60%);
+  }
+  .locked-kicker {
+    font-size:10.5px; font-weight:700; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--gold-hi); margin-bottom:8px;
+  }
+  .locked h2 {
+    font-family:'Space Grotesk',sans-serif; font-weight:700;
+    font-size:clamp(22px,3.2vw,28px); line-height:1.15; margin-bottom:18px;
+  }
+  .lock-list { list-style:none; display:grid; gap:11px; margin-bottom:24px; }
+  .lock-list li {
+    display:flex; gap:12px; align-items:flex-start;
+    font-size:14.5px; color:var(--dim);
+  }
+  .lock-list li .lk { filter:grayscale(1); opacity:.8; padding-top:1px; }
+  .lock-list li b { color:var(--text); font-weight:600; }
+  .cta-btn {
+    display:inline-flex; align-items:center; gap:10px; text-decoration:none;
+    font-size:14.5px; font-weight:700; letter-spacing:.04em; color:#fff;
+    background:linear-gradient(135deg,var(--gold),var(--gold-lo));
+    border-radius:13px; padding:16px 30px;
+    transition:transform .25s var(--ease), box-shadow .25s var(--ease);
+  }
+  .cta-btn:hover { transform:translateY(-2px); box-shadow:0 12px 34px rgba(162,89,255,.24); }
+  .offer-note { margin-top:14px; font-size:12.5px; color:var(--gold-hi); letter-spacing:.04em; }
+  .offer-note b { letter-spacing:.16em; font-variant-numeric:tabular-nums; }
+
+  /* ============ FOOTER ============ */
+  footer {
+    max-width:920px; margin:0 auto; padding:34px 22px 46px;
+    border-top:1px solid var(--line);
+    display:flex; flex-wrap:wrap; justify-content:space-between; gap:14px; align-items:center;
+  }
+  footer .fl {
+    font-size:11.5px; color:var(--faint); letter-spacing:.1em; text-transform:uppercase; font-weight:600;
+  }
+  footer .fr a { color:var(--gold); text-decoration:none; font-size:12.5px; font-weight:600; letter-spacing:.04em; }
+  footer .fr a:hover { color:var(--gold-hi); }
+  .disclaimer {
+    flex-basis:100%; font-size:11.5px; color:var(--faint); line-height:1.7; margin-top:6px; letter-spacing:.01em;
+  }
+
+  /* ============ PRINT ============ */
+  @media print {
+    body { background:#fff; color:#111; font-size:12px; }
+    .no-print, .top-cta, .locked, footer { display:none !important; }
+    .topbar { border-bottom:2px solid #111; padding-bottom:10px; }
+    .wordmark b { color:#111; }
+    .wordmark em { color:#555; }
+    main { padding:18px 0; }
+    h1 { color:#111; font-size:30px; }
+    h1 em { color:#333; }
+    .sub { color:#444; }
+    .free-badge { color:#111; border-color:#999; }
+    .card { background:#fff; border:1.5px solid #222; border-radius:14px; margin-top:22px; padding:22px 24px; break-inside:avoid; }
+    .card::before { display:none; }
+    .card-kicker { color:#333; }
+    .card h2 { color:#111; }
+    .card .dur { color:#777; }
+    .step { border-top:1px solid #ddd; }
+    .step .num { color:#8a6d3b; }
+    .step p, .checks li { color:#111; }
+    .step p span.t, .checks li span.t { color:#777; }
+    .checks li { border-top:1px solid #ddd; }
+    .checks li::before { color:#0a7d62; }
+    .quote p { color:#111; }
+    .quote cite { color:#666; }
+    .print-note { display:block !important; font-size:10.5px; color:#555; margin-top:20px; text-align:center; }
+  }
+  .print-note { display:none; }
+
+  @media (max-width:520px) {
+    .top-cta { display:none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand" aria-label="FLOS Protocol">
+    <img class="brand-logo" src="icon-512.png" alt="FLOS Protocol logo" width="38" height="38">
+    <span class="wordmark"><b>FLOS</b><em>SCIENCE · METABOLISM · TRANSFORMATION</em></span>
+  </div>
+  <a class="top-cta" href="/audit/">← Back to the Audit</a>
+</header>
+
+<main>
+
+  <span class="free-badge"><span class="dot"></span>Free sample · FLOS Core Resource</span>
+
+  <h1>The FLOS <em>Quickstart Card</em></h1>
+  <p class="sub">Your week-one anchor. This free sample gives you the <b>two pieces that matter most when you start</b>: the 5-minute Morning Flow Protocol and the Week-1 focus list. Print it. Keep it visible.</p>
+
+  <div class="hero-actions no-print">
+    <button class="btn-print" onclick="window.print()">🖨 Print / Save as PDF</button>
+    <a class="btn-ghost" href="/audit/">Haven't taken the audit? Get your score →</a>
+  </div>
+
+  <!-- ============ MORNING FLOW ============ -->
+  <section class="card" aria-labelledby="t-morning">
+    <div class="card-kicker"><span class="ico">⚡</span> Morning Flow Protocol</div>
+    <h2>4 steps before the day starts</h2>
+    <div class="dur">Takes ~5 minutes · Paper or any notes app works — no tools required</div>
+
+    <div class="steps">
+      <div class="step"><span class="num">1</span><p><b>Score your wake-up energy from 1–10.</b> Write it down. One number, every morning — that is your baseline.<span class="t">60 seconds · on waking</span></p></div>
+      <div class="step"><span class="num">2</span><p><b>Set one Focus Intent for the day</b> — in 10 words or less. One thing that makes today a win.<span class="t">Write it where you will see it</span></p></div>
+      <div class="step"><span class="num">3</span><p><b>Decide your first meal or calorie target now.</b> Calories first, macros later — remove the noon guessing.<span class="t">Decide once, not all day</span></p></div>
+      <div class="step"><span class="num">4</span><p><b>Decide today: Load day or Rest day?</b> Name it before the day does. Plan beats improvisation.<span class="t">Training scheduled, not hoped for</span></p></div>
+    </div>
+  </section>
+
+  <!-- ============ WEEK 1 ============ -->
+  <section class="card" aria-labelledby="t-week1">
+    <div class="card-kicker"><span class="ico">🎯</span> Week 1 — Your Only Focus</div>
+    <h2>Keep it boring. Boring works.</h2>
+    <div class="dur">Do not add anything else this week</div>
+
+    <ul class="checks">
+      <li><div><b>Track calories only.</b> Do not obsess over macros yet — one dial before the full dashboard.<span class="t">All week</span></div></li>
+      <li><div><b>Log one habit per day.</b> Consistency over perfection — a chain you never want to break.<span class="t">AM or PM, your choice</span></div></li>
+      <li><div><b>Rate every training session's effort from 1–10.</b> Just the number. This is the seed of the RPE system you get in the full card.<span class="t">After each session</span></div></li>
+      <li><div><b>Do not change your diet drastically.</b> Stabilize the basics first — optimize before you overhaul.<span class="t">Protect the week</span></div></li>
+    </ul>
+  </section>
+
+  <!-- ============ QUOTE ============ -->
+  <div class="quote">
+    <p>"Small inputs done consistently produce extraordinary outputs."</p>
+    <cite>— The FLOS Principle</cite>
+  </div>
+
+  <p class="print-note">FLOS Quickstart Card — Free Sample · Full card + system: flosapp.gumroad.com/l/flos-protocol</p>
+
+  <!-- ============ LOCKED ============ -->
+  <section class="locked no-print" aria-labelledby="t-locked">
+    <div class="locked-kicker">🔒 This is the free sample</div>
+    <h2 id="t-locked">Inside the full Quickstart Card (Core resource)</h2>
+    <ul class="lock-list">
+      <li><span class="lk">▣</span><div><b>RPE Training Scale</b> — the 1–10 reference and exactly where your working sets should live.</div></li>
+      <li><span class="lk">▣</span><div><b>Daily Macro Targets card</b> — a printable fill-in for protein, carbs, fats, and calories from your TDEE.</div></li>
+      <li><span class="lk">▣</span><div><b>Daily FLOS Checklist</b> — the six daily non-negotiables, timed across the day.</div></li>
+      <li><span class="lk">▣</span><div><b>The full Command System</b> — 12-week protocol, trackers, and tools inside the license-gated portal.</div></li>
+    </ul>
+    <a class="cta-btn" href="https://flosapp.gumroad.com/l/flos-protocol/z7q3cx4" target="_blank" rel="noopener">Unlock the FLOS Protocol →</a>
+    <p class="offer-note">10% audit discount auto-applied at checkout — code <b>z7q3cx4</b> · one-time payment · 30-day guarantee</p>
+  </section>
+
+</main>
+
+<footer class="no-print">
+  <div class="fl">FLOS Protocol · by MJRevz · © <span id="yr"></span></div>
+  <div class="fr"><a href="/audit/">Take the free Readiness Audit →</a></div>
+  <p class="disclaimer">The FLOS Quickstart Card (Free Sample) is general wellness education, not medical advice, diagnosis, or treatment. Consult a physician, registered dietitian, or qualified professional before changing your diet, training, or supplementation. The full Quickstart Card is a Core-tier resource of the paid FLOS Protocol Command System.</p>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

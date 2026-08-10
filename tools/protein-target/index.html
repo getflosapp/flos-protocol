@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Protein Intake Calculator — How Much Protein Per Day (g/kg) | FLOS Protocol</title>
+<meta name="description" content="Free protein target calculator by body weight and goal: fat loss, recomp, or lean build. Based on the Morton 2018 meta-analysis and ISSN position stand — with per-meal distribution.">
+<link rel="canonical" href="https://flos-protocol.vercel.app/tools/protein-target/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FLOS Protocol">
+<meta property="og:title" content="Protein Intake Calculator — g/day by goal | FLOS Protocol">
+<meta property="og:description" content="How much protein per day for fat loss, recomp, or building? Your exact grams from the meta-analysis — free, no signup.">
+<meta property="og:url" content="https://flos-protocol.vercel.app/tools/protein-target/">
+<meta property="og:image" content="https://flos-protocol.vercel.app/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16.png">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "WebApplication", "name": "FLOS Protein Target Calculator",
+      "url": "https://flos-protocol.vercel.app/tools/protein-target/",
+      "applicationCategory": "HealthApplication", "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "description": "Daily protein target calculator by body weight and goal, from sports-nutrition meta-analysis and the ISSN position stand." },
+    { "@type": "FAQPage", "mainEntity": [
+      { "@type": "Question", "name": "How much protein do I need per day to build or keep muscle?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Meta-analysis of 49 studies (Morton et al., 2018) found protein supplementation gains plateau around 1.6 g/kg/day, with a 95% confidence interval up to 2.2 g/kg/day — so a practical target is 1.6-2.2 g/kg/day, higher during a calorie deficit." } },
+      { "@type": "Question", "name": "Is more than 2.2 g/kg of protein better?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Beyond the meta-analysis ceiling, extra protein shows no additional muscle benefit for most lifters — it mainly displaces carbs and fats that fuel training. Spend the effort on hitting your number daily instead of overshooting it." } },
+      { "@type": "Question", "name": "Is high protein safe for healthy adults?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The ISSN position stand notes no evidence of harm from protein intakes up to about 2.0-2.8 g/kg/day in healthy, exercising individuals. Anyone with existing kidney, liver, or metabolic conditions should clear targets with a physician or registered dietitian first." } },
+      { "@type": "Question", "name": "Do I need protein powder to hit my target?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No — powder is convenience, not magic. Whole-food protein works identically; a shake simply makes a 160 g/day target easier on busy days. Total daily protein matters far more than source or timing." } }
+    ] }
+  ]
+}
+</script>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root { --bg:#0a0a0f; --card:#0d0d16; --elev:#12121c; --text:#f4f4fa; --dim:#a0a0b4; --faint:#5a5a70;
+    --gold:#a259ff; --gold-hi:#cf9fff; --gold-lo:#7c3aed; --teal:#00c9a7; --line:rgba(255,255,255,.10); --ease:cubic-bezier(.16,1,.3,1); }
+  body { font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:var(--bg); color:var(--text); min-height:100vh; -webkit-font-smoothing:antialiased; }
+  ::selection { background:rgba(162,89,255,.30); }
+  .topbar { display:flex; align-items:center; justify-content:space-between; gap:14px; max-width:760px; margin:0 auto; padding:22px 22px 18px; border-bottom:1px solid var(--line); }
+  .brand { display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--text); }
+  .brand-logo { width:38px; height:38px; border-radius:10px; box-shadow:0 2px 16px rgba(0,201,167,.20); }
+  .wordmark b { font-size:15px; font-weight:800; letter-spacing:.18em; display:block; line-height:1.1; }
+  .wordmark b::after { content:' PROTOCOL'; font-weight:300; color:var(--dim); letter-spacing:.22em; }
+  .wordmark em { font-style:normal; font-size:8.5px; letter-spacing:.24em; color:var(--gold-lo); font-weight:600; }
+  .top-cta { font-size:12.5px; font-weight:600; text-decoration:none; color:var(--gold-hi); border:1px solid rgba(162,89,255,.35); border-radius:10px; padding:9px 16px; white-space:nowrap; }
+  .top-cta:hover { border-color:var(--gold); background:rgba(162,89,255,.08); }
+  main { max-width:760px; margin:0 auto; padding:clamp(28px,6vw,56px) 22px 40px; }
+  .badge { display:inline-flex; align-items:center; gap:9px; padding:8px 19px; border-radius:100px; font-size:10.5px; font-weight:700; letter-spacing:.19em; text-transform:uppercase; color:var(--teal); border:1px solid rgba(0,201,167,.30); }
+  .badge::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--teal); }
+  h1 { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(32px,5.5vw,48px); line-height:1.14; margin:26px 0 16px; }
+  h1 em { font-style:italic; color:var(--gold-hi); }
+  .sub { font-size:15.5px; font-weight:300; line-height:1.8; color:var(--dim); max-width:580px; }
+  .sub strong { color:var(--text); font-weight:600; }
+  .tool { margin-top:30px; background:var(--card); border:1px solid transparent; border-radius:20px; padding:clamp(22px,4vw,34px);
+    background:linear-gradient(var(--card),var(--card)) padding-box, linear-gradient(160deg, rgba(238,217,172,.22), rgba(238,217,172,.05) 42%, rgba(238,217,172,.13)) border-box; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .field label { display:block; font-size:10.5px; font-weight:700; color:var(--dim); text-transform:uppercase; letter-spacing:.11em; margin-bottom:9px; }
+  .field input, .field select { width:100%; padding:15px 16px; background:var(--elev); border:1px solid rgba(235,220,190,.10); border-radius:12px; color:var(--text); font-size:16px; font-family:'Inter',sans-serif; appearance:none; -webkit-appearance:none; }
+  .field select { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239a968c' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 16px center; padding-right:40px; }
+  .field input:focus, .field select:focus { outline:none; border-color:var(--gold); box-shadow:0 0 0 4px rgba(162,89,255,.12); }
+  .results { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:24px; }
+  .ecard { background:var(--elev); border:1px solid rgba(235,220,190,.08); border-radius:14px; padding:19px 18px; }
+  .ecard .el { font-size:10px; font-weight:700; letter-spacing:.13em; text-transform:uppercase; color:var(--faint); margin-bottom:9px; }
+  .ecard .ev { font-size:24px; font-weight:800; font-variant-numeric:tabular-nums; }
+  .ecard .ev span { font-size:11px; font-weight:500; color:var(--faint); }
+  .ecard .eu { font-size:11px; color:var(--dim); margin-top:6px; line-height:1.55; font-weight:300; }
+  .ecard.gold { border:1px solid transparent; background:linear-gradient(rgba(162,89,255,.06),rgba(162,89,255,.06)) padding-box, linear-gradient(150deg, rgba(238,217,172,.35), rgba(238,217,172,.08) 50%, rgba(238,217,172,.18)) border-box; }
+  .ecard.gold .ev { color:var(--gold-hi); }
+  .toolnote { font-size:11.5px; color:var(--faint); margin-top:16px; line-height:1.7; }
+  section.content { margin-top:48px; }
+  h2 { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(22px,3.6vw,30px); line-height:1.25; margin-bottom:14px; }
+  h2 em { font-style:italic; color:var(--gold-hi); }
+  .content p { font-size:14.5px; font-weight:300; line-height:1.85; color:var(--dim); margin:0 0 14px; max-width:680px; }
+  .content p b, .content p strong { color:var(--text); font-weight:600; }
+  details { background:var(--card); border:1px solid rgba(235,220,190,.09); border-radius:14px; margin-bottom:10px; }
+  summary { cursor:pointer; list-style:none; padding:17px 19px; font-size:14px; font-weight:600; display:flex; justify-content:space-between; align-items:center; gap:14px; }
+  summary::-webkit-details-marker { display:none; }
+  summary::after { content:'+'; color:var(--gold); font-weight:700; font-size:17px; }
+  details[open] summary::after { transform:rotate(45deg); }
+  details p { padding:0 19px 17px; font-size:13px; color:var(--dim); line-height:1.75; margin:0; }
+  .reflist { margin:0; padding:0; list-style:none; }
+  .reflist li { position:relative; padding:12px 0 12px 40px; border-bottom:1px solid rgba(235,220,190,.06); font-size:12.5px; color:var(--dim); line-height:1.65; }
+  .reflist li b { color:var(--gold-lo); position:absolute; left:0; top:12px; font-size:11px; }
+  .reflist i { color:var(--dim); }
+  .reflist a { color:var(--gold); text-decoration:none; border-bottom:1px dotted rgba(162,89,255,.4); }
+  .cta-box { margin-top:44px; text-align:center; padding:34px 26px; border-radius:20px; border:1px solid transparent;
+    background:linear-gradient(180deg, rgba(162,89,255,.07), rgba(162,89,255,.02)) padding-box, linear-gradient(160deg, rgba(238,217,172,.5), rgba(238,217,172,.1) 40%, rgba(238,217,172,.3)) border-box; }
+  .cta-box .ck { font-size:10.5px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); }
+  .cta-box h3 { font-family:'Space Grotesk',sans-serif; font-size:24px; font-weight:700; margin:12px 0 8px; }
+  .cta-box p { font-size:13.5px; color:var(--dim); line-height:1.7; max-width:440px; margin:0 auto 20px; font-weight:300; }
+  .cta-btn { display:inline-block; padding:16px 30px; border-radius:13px; text-decoration:none; font-size:14.5px; font-weight:800; color:#fff; background:linear-gradient(135deg, var(--gold), var(--gold-lo)); }
+  .cta-tools { margin-top:22px; font-size:12px; letter-spacing:.05em; }
+  .cta-tools a { color:var(--gold); text-decoration:none; margin:0 8px; border-bottom:1px dotted rgba(162,89,255,.4); }
+  footer { max-width:760px; margin:0 auto; padding:28px 22px 42px; border-top:1px solid var(--line); }
+  footer p { font-size:11.5px; color:var(--faint); line-height:1.7; }
+  @media (max-width:640px){ .grid2{grid-template-columns:1fr;} .results{grid-template-columns:1fr;} .top-cta{display:none;} }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="https://flos-protocol.vercel.app/audit/">
+    <img class="brand-logo" src="../../icon-512.png" alt="FLOS Protocol logo" width="38" height="38">
+    <span class="wordmark"><b>FLOS</b><em>SCIENCE · METABOLISM · TRANSFORMATION</em></span>
+  </a>
+  <a class="top-cta" href="https://flos-protocol.vercel.app/audit/">← Back to the Audit</a>
+</header>
+
+<main>
+  <span class="badge">Free tool · Evidence-based</span>
+  <h1>Protein <em>target</em></h1>
+  <p class="sub">The single highest-leverage number in nutrition. Your exact daily grams by body weight and goal — from the largest protein meta-analysis in sports nutrition<span style="color:var(--gold); font-size:11px;"> [1]</span>, not from bro science.</p>
+
+  <div class="tool">
+    <div class="grid2">
+      <div class="field"><label for="weight">Weight (kg)</label><input type="number" id="weight" inputmode="decimal" placeholder="75" min="35" max="250" oninput="calc()"></div>
+      <div class="field"><label for="goal">90-day goal</label>
+        <select id="goal" onchange="calc()">
+          <option value="lose">Lose fat</option>
+          <option value="recomp">Recompose / maintain</option>
+          <option value="build">Build lean muscle</option>
+        </select></div>
+      <div class="field"><label for="meals">Meals per day</label>
+        <select id="meals" onchange="calc()">
+          <option value="3">3 meals</option>
+          <option value="4" selected>4 meals</option>
+          <option value="5">5 meals</option>
+        </select></div>
+      <div class="field"><label>&nbsp;</label><input type="text" id="why" readonly></div>
+    </div>
+
+    <div class="results">
+      <div class="ecard gold"><div class="el">Your daily protein target</div><div class="ev" id="r-day">—</div><div class="eu" id="r-day-u">Enter your weight. Protein first. Always.</div></div>
+      <div class="ecard"><div class="el">Per meal</div><div class="ev" id="r-meal">—</div><div class="eu">Roughly even across meals beats one giant protein dinner.</div></div>
+      <div class="ecard"><div class="el">Evidence range</div><div class="ev" id="r-range">1.6–2.2 <span>g/kg</span></div><div class="eu">Where muscle benefit lives — and where it plateaus.</div></div>
+      <div class="ecard"><div class="el">In food terms</div><div class="ev" id="r-food">—</div><div class="eu" id="r-food-u">~30 g protein per chicken breast (120 g), 3 eggs ≈ 18 g.</div></div>
+    </div>
+    <p class="toolnote">Computed locally in your browser — nothing is stored or sent anywhere.</p>
+  </div>
+
+  <section class="content">
+    <h2>The number that does the <em>work</em></h2>
+    <p>In a meta-analysis of 49 studies, protein supplementation drove significantly greater gains in muscle mass and strength — and the benefit <b>plateaued around 1.6 g/kg/day</b>, with the 95% confidence interval reaching ~2.2 g/kg/day.<span style="color:var(--gold); font-size:11px;"> [1]</span> The ISSN position stand lands in the same neighborhood for building and maintaining muscle.<span style="color:var(--gold); font-size:11px;"> [2]</span></p>
+    <p>Translation: your job is not finding a magic number — it is <b>hitting a good number daily</b>. Consistency at 1.8 g/kg beats occasional heroics at 2.5.</p>
+    <h2>Why the multiplier changes by <em>goal</em></h2>
+    <p>In a <b>deficit</b>, protein is your muscle-insurance policy: higher intakes (~2.2 g/kg) help ensure the weight you lose is fat, not lean mass. <b>Recomp</b> sits in the middle (~2.0) — enough to build slowly while holding weight. In a <b>controlled surplus</b>, abundant carbs and fats spare protein, so ~1.8 g/kg covers growth comfortably.</p>
+    <h2>Spread it <em>across the day</em></h2>
+    <p>The ISSN suggests distributing protein across the day — roughly <b>0.4 g/kg per meal across at least four meals</b> is a practical pattern for maximizing muscle protein synthesis.<span style="color:var(--gold); font-size:11px;"> [2]</span> Front-loading breakfast matters more than any post-workout window anxiety.</p>
+  </section>
+
+  <section class="content">
+    <h2>Questions, <em>answered straight</em></h2>
+    <details><summary>How much protein do I actually need?</summary><p>1.6–2.2 g/kg/day covers the evidence-based range for lifters<span style="color:var(--gold); font-size:11px;"> [1][2]</span> — higher end in a deficit, lower end in a surplus. This tool picks your point on that range by goal.</p></details>
+    <details><summary>Is more than 2.2 g/kg better?</summary><p>The meta-analysis shows the benefit plateau<span style="color:var(--gold); font-size:11px;"> [1]</span> — beyond it you're mostly displacing carbs and fats that fuel training. Hit the number daily instead of overshooting it occasionally.</p></details>
+    <details><summary>Is high protein safe?</summary><p>For healthy, exercising adults, the ISSN reports no evidence of harm at these intakes.<span style="color:var(--gold); font-size:11px;"> [2]</span> Existing kidney, liver, or metabolic conditions are a different conversation — clear it with a physician or dietitian first.</p></details>
+    <details><summary>Do I need protein powder?</summary><p>No. Powder is convenience, not magic — whole food works identically. A shake just makes a 160 g/day target easier on a busy Tuesday. Total daily intake beats source and timing by a mile.</p></details>
+  </section>
+
+  <section class="content">
+    <h2>References</h2>
+    <ol class="reflist">
+      <li><b>01</b>Morton RW, Murphy KT, McKellar SR, et al. "A systematic review, meta-analysis and meta-regression of the effect of protein supplementation on resistance training-induced gains in muscle mass and strength in healthy adults." <i>British Journal of Sports Medicine</i>, 2018. <a href="https://doi.org/10.1136/bjsports-2017-097608" target="_blank" rel="noopener">doi.org ↗</a></li>
+      <li><b>02</b>Jäger R, Kerksick CM, Campbell BI, et al. "International Society of Sports Nutrition Position Stand: protein and exercise." <i>Journal of the International Society of Sports Nutrition</i>, 2017. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=International+Society+of+Sports+Nutrition+Position+Stand+protein+and+exercise" target="_blank" rel="noopener">PubMed ↗</a></li>
+    </ol>
+  </section>
+
+  <div class="cta-box">
+    <div class="ck">This is one pillar of four</div>
+    <h3>Protein is <em>Output</em>. What about the other three?</h3>
+    <p>Flow, Load, and Sustain decide whether this number ever shows up on your body. Score your whole system in 90 seconds — free, instant.</p>
+    <a class="cta-btn" href="https://flos-protocol.vercel.app/audit/?utm_source=tool&utm_medium=protein">Take the Readiness Audit →</a>
+    <div class="cta-tools">More free tools: <a href="../tdee/">TDEE Calculator</a> · <a href="../rpe-scale/">RPE Scale</a></div>
+  </div>
+</main>
+
+<footer><p>Educational estimates from published research — not medical advice, diagnosis, or treatment. Consult a physician or registered dietitian before changing your diet. © 2026 FLOS Protocol by MJRevz.</p></footer>
+
+<script>
+const FACTORS = { lose: 2.2, recomp: 2.0, build: 1.8 };
+const WHYS = {
+  lose: 'Deficit = muscle insurance (2.2 g/kg)',
+  recomp: 'Middle of the evidence range (2.0 g/kg)',
+  build: 'Carbs spare protein in a surplus (1.8 g/kg)'
+};
+function num(id){ const v = parseFloat(document.getElementById(id).value); return isFinite(v) ? v : null; }
+function calc(){
+  const w = num('weight');
+  const goal = document.getElementById('goal').value;
+  const meals = parseInt(document.getElementById('meals').value, 10);
+  document.getElementById('why').value = WHYS[goal];
+  if (!w || w < 35 || w > 250) {
+    ['r-day','r-meal','r-food'].forEach(id => document.getElementById(id).innerHTML = '—');
+    return;
+  }
+  const g = Math.round(w * FACTORS[goal]);
+  const perMeal = Math.round(g / meals);
+  const breasts = (g / 30).toFixed(1);
+  document.getElementById('r-day').innerHTML = g + ' <span>g / day</span>';
+  document.getElementById('r-day-u').textContent = FACTORS[goal] + ' g/kg × ' + w + ' kg, for your "' + goal + '" phase. Protein first. Always.';
+  document.getElementById('r-meal').innerHTML = perMeal + ' <span>g × ' + meals + ' meals</span>';
+  document.getElementById('r-food').innerHTML = '≈ ' + breasts + ' <span>chicken breasts</span>';
+  document.getElementById('r-food-u').textContent = 'At ~30 g protein per 120 g breast — or ~' + Math.ceil(g / 18) + ' whole eggs if that is your religion. Mix sources; the total is what matters.';
+}
+calc();
+</script>
+</body>
+</html>

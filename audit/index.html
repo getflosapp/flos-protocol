@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The 90-Day Readiness Audit — Free 4-Pillar Fitness Self-Assessment | FLOS Protocol</title>
+<meta name="description" content="Free 90-second FLOS Readiness Audit: 14 questions scored across Flow, Load, Output & Sustain. Unlock your score /100, weakest pillar, and exact calorie + protein targets — instantly on this page." />
+<meta name="robots" content="index,follow" />
+<link rel="canonical" href="https://flos-protocol.vercel.app/audit/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="FLOS Protocol" />
+<meta property="og:title" content="The 90-Day Readiness Audit — FLOS Protocol" />
+<meta property="og:description" content="Which pillar is quietly canceling your progress? Free 90-second audit: score /100, weakest pillar named, exact calorie & protein targets." />
+<meta property="og:url" content="https://flos-protocol.vercel.app/audit/" />
+<meta property="og:image" content="https://flos-protocol.vercel.app/og-image.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Is the FLOS Readiness Audit really free?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. The audit is a free educational self-assessment. You answer 14 questions, enter your email to unlock your full pillar breakdown instantly on the page, and a copy of your report is emailed to you. No card is required." } },
+    { "@type": "Question", "name": "How is my FLOS Readiness Score calculated?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Your answers are scored across four pillars — Flow, Load, Output and Sustain. Each pillar is normalized to 25 points for a total score out of 100. Your lowest pillar is identified as the weakest link your effort is leaking through, and your verdict and recommendation follow from that score." } },
+    { "@type": "Question", "name": "Are the calorie and protein targets medical advice?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. Targets are population-level estimates from the Mifflin–St Jeor equation and standard activity multipliers, with protein derived from published sports-nutrition meta-analyses. They are educational starting points to refine with weekly reviews — not medical advice, diagnosis, or treatment." } },
+    { "@type": "Question", "name": "What is the FLOS Protocol?",
+      "acceptedAnswer": { "@type": "Answer", "text": "FLOS Protocol is a 12-week self-coaching command system for fitness: a protected tracking app, guided launch plan, weekly review tools, macro and RPE references, and a 90-day scorecard — organized into Core, Pro and Elite tiers. This free audit is a working sample of its tracking-and-review method." } }
+  ]
+}
+</script>
+<style>
+/* ============================================================
+   FLOS AUDIT — PREMIUM EXPERIENCE v2.0 ("Command Check")
+   Brand: deep space #0a0a0f · primary #a259ff → #7c3aed · accent #00c9a7
+   ============================================================ */
+:root{
+  --bg:#0a0a0f; --bg2:#0d0d16; --card:rgba(255,255,255,.045); --card2:rgba(255,255,255,.075);
+  --border:rgba(255,255,255,.10); --border2:rgba(255,255,255,.16);
+  --text:#f4f4fa; --muted:rgba(244,244,250,.66); --dim:rgba(244,244,250,.40);
+  --primary:#a259ff; --primary-d:#7c3aed; --accent:#00c9a7; --gold:#f0c040; --danger:#ff5d7a;
+  --spring:cubic-bezier(.16,1,.3,1);
+  --radius:20px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Space Grotesk',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  background:var(--bg); color:var(--text); min-height:100vh; overflow-x:hidden;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+body::before{content:"";position:fixed;inset:-20%;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(circle at 22% 18%, rgba(162,89,255,.16), transparent 34%),
+    radial-gradient(circle at 82% 82%, rgba(0,201,167,.10), transparent 36%);
+}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.35;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size:56px 56px;
+  mask-image:radial-gradient(circle at 50% 30%, black, transparent 75%);
+}
+::selection{background:rgba(162,89,255,.4)}
+a{color:var(--accent)}
+button{font-family:inherit}
+img{max-width:100%}
+.wrap{max-width:640px;margin:0 auto;padding:26px 20px 60px}
+.wide{max-width:880px;margin:0 auto;padding:26px 20px}
+
+/* ---------- top HUD progress ---------- */
+.hud{position:fixed;top:0;left:0;right:0;z-index:50;pointer-events:none;
+  transform:translateY(-110%);transition:transform .5s var(--spring)}
+.hud.on{transform:translateY(0)}
+.hud-in{max-width:640px;margin:10px auto 0;padding:10px 16px;
+  background:rgba(13,13,22,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid var(--border);border-radius:16px;display:flex;align-items:center;gap:14px}
+.hud-mark{width:26px;height:26px;border-radius:8px;flex:none;
+  background:linear-gradient(135deg,var(--primary),var(--primary-d));
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+.hud-label{font-size:10px;font-weight:700;letter-spacing:.18em;color:var(--dim);white-space:nowrap}
+.hud-label b{color:var(--accent);font-weight:700}
+.hud-rail{flex:1;height:4px;border-radius:99px;background:rgba(255,255,255,.07);overflow:hidden}
+.hud-fill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--primary),var(--accent));
+  transition:width .7s var(--spring)}
+
+/* ---------- brand row ---------- */
+.brandrow{display:flex;align-items:center;gap:12px;padding:8px 0 0}
+  .audit-home{margin-left:auto;color:rgba(244,244,250,.40);text-decoration:none;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;transition:color .25s}
+  .audit-home:hover{color:#a259ff}
+.logochip{width:38px;height:38px;border-radius:12px;
+  background:linear-gradient(135deg,var(--primary),var(--primary-d));
+  display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#fff;
+  box-shadow:0 8px 26px rgba(162,89,255,.35)}
+.brandname{font-size:12px;font-weight:700;letter-spacing:.24em;color:var(--muted)}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:10.5px;font-weight:700;letter-spacing:.2em;
+  color:var(--accent);border:1px solid rgba(0,201,167,.45);border-radius:999px;padding:7px 15px;margin:26px 0 20px}
+.kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+
+/* ---------- hero ---------- */
+h1{font-size:clamp(34px,6.4vw,46px);line-height:1.04;letter-spacing:-.03em;font-weight:700}
+h1 em{font-style:italic;color:var(--primary)}
+.sub{color:var(--muted);font-size:15.5px;line-height:1.75;margin-top:18px;font-weight:400}
+.sub strong{color:var(--text);font-weight:600}
+.statpills{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.statpills span{font-size:12.5px;font-weight:600;color:var(--muted);border:1px solid var(--border);
+  border-radius:999px;padding:7px 14px;background:var(--card)}
+.statpills b{color:var(--accent);font-weight:700}
+.outcomes{display:grid;gap:10px;margin:30px 0 8px}
+.outcome{display:flex;gap:16px;padding:18px 18px;border:1px solid var(--border);border-radius:var(--radius);
+  background:var(--card);transition:transform .45s var(--spring), border-color .3s, background .3s}
+.outcome:hover{transform:translateY(-2px);border-color:var(--border2);background:var(--card2)}
+.ou-ix{width:40px;height:40px;flex:none;border-radius:12px;display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:700;letter-spacing:.08em;
+  background:rgba(162,89,255,.12);border:1px solid rgba(162,89,255,.35);color:var(--primary)}
+.ou-t{font-size:15px;font-weight:600;letter-spacing:-.01em}
+.ou-d{font-size:13px;color:var(--muted);margin-top:5px;line-height:1.6}
+.cta{display:inline-flex;align-items:center;gap:10px;justify-content:center;width:100%;margin-top:22px;
+  padding:17px 26px;border:0;border-radius:16px;cursor:pointer;color:#fff;font-size:15.5px;font-weight:700;letter-spacing:.01em;
+  background:linear-gradient(135deg,var(--primary),var(--primary-d));
+  box-shadow:0 14px 40px rgba(162,89,255,.30);
+  transition:transform .35s var(--spring), box-shadow .35s, filter .2s}
+.cta:hover{transform:translateY(-2px);box-shadow:0 18px 48px rgba(162,89,255,.42)}
+.cta:active{transform:translateY(0) scale(.99)}
+.cta:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+.cta .arw{transition:transform .35s var(--spring)}
+.cta:hover .arw{transform:translateX(4px)}
+.cta.ghost{background:var(--card);border:1px solid var(--border2);color:var(--text);box-shadow:none;font-weight:600}
+.cta.ghost:hover{border-color:rgba(162,89,255,.5)}
+.micro{color:var(--dim);font-size:12px;line-height:1.7;margin-top:14px;text-align:center}
+.resume-note{display:none;margin-top:18px;padding:14px 16px;border-radius:14px;font-size:13px;
+  border:1px solid rgba(0,201,167,.35);background:rgba(0,201,167,.08);color:var(--accent);line-height:1.55}
+.resume-note button{margin-left:8px;border:1px solid rgba(0,201,167,.5);background:none;color:var(--accent);
+  border-radius:8px;padding:5px 10px;font-size:12px;font-weight:700;cursor:pointer}
+.retake-note{display:none;margin-top:16px;padding:14px 16px;border-radius:14px;font-size:13px;
+  border:1px solid rgba(240,192,64,.35);background:rgba(240,192,64,.07);color:var(--gold);line-height:1.6}
+
+/* ---------- wizard steps ---------- */
+.step{display:none;animation:stepIn .55s var(--spring)}
+.step.active{display:block}
+@keyframes stepIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.stepkick{font-size:10.5px;font-weight:700;letter-spacing:.2em;color:var(--primary);margin-bottom:10px}
+.stepkick b{color:var(--dim);font-weight:700}
+h2{font-size:clamp(23px,4.6vw,29px);letter-spacing:-.02em;line-height:1.15;font-weight:700}
+.stepnote{color:var(--muted);font-size:13.5px;line-height:1.7;margin-top:10px}
+.qcard{margin-top:26px;padding:20px;border:1px solid var(--border);border-radius:var(--radius);background:var(--card)}
+.qlabel{font-size:15.5px;font-weight:600;letter-spacing:-.01em;line-height:1.4}
+.qsub{font-size:12.5px;color:var(--dim);margin-top:4px;line-height:1.5}
+.opts{display:grid;gap:9px;margin-top:15px}
+.opt{display:flex;align-items:center;gap:13px;width:100%;text-align:left;cursor:pointer;
+  padding:14px 14px;border-radius:15px;border:1px solid var(--border);background:rgba(255,255,255,.03);
+  color:var(--muted);font-size:14px;font-weight:500;line-height:1.45;
+  transition:all .3s var(--spring)}
+.opt:hover{border-color:rgba(162,89,255,.45);color:var(--text);background:rgba(162,89,255,.07);transform:translateX(2px)}
+.opt .ix{flex:none;width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;color:var(--dim);border:1px solid var(--border);transition:all .3s}
+.opt.sel{border-color:var(--accent);background:rgba(0,201,167,.10);color:var(--text);
+  box-shadow:0 0 0 3px rgba(0,201,167,.12)}
+.opt.sel .ix{background:var(--accent);border-color:var(--accent);color:#052a22}
+.opt small{display:block;font-size:12px;color:var(--dim);font-weight:400;margin-top:2px}
+.fields{display:grid;gap:13px;margin-top:18px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.fld label{display:block;font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--dim);margin-bottom:7px;text-transform:uppercase}
+.fld input,.fld select{width:100%;padding:14px 15px;border-radius:14px;border:1px solid var(--border);
+  background:rgba(0,0,0,.3);color:var(--text);font-size:16px;font-family:inherit;outline:none;
+  transition:border-color .25s, box-shadow .25s}
+.fld input:focus,.fld select:focus{border-color:rgba(162,89,255,.65);box-shadow:0 0 0 4px rgba(162,89,255,.14)}
+.fld.invalid input,.fld.invalid select{border-color:var(--danger);box-shadow:0 0 0 4px rgba(255,93,122,.12)}
+.err{display:none;font-size:12px;color:var(--danger);margin-top:6px;font-weight:600}
+.fld.invalid .err{display:block}
+.navrow{display:flex;gap:10px;margin-top:26px}
+.navrow .cta{margin-top:0}
+.hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}
+
+/* ---------- processing overlay ---------- */
+.scanlist{display:grid;gap:11px;margin-top:26px}
+.scanitem{display:flex;align-items:center;gap:13px;padding:14px 16px;border:1px solid var(--border);
+  border-radius:14px;background:var(--card);font-size:13.5px;color:var(--dim);
+  transition:all .45s var(--spring)}
+.scanitem .k{width:24px;height:24px;flex:none;border-radius:50%;border:1.5px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;font-size:12px;color:transparent}
+.scanitem.done{color:var(--text);border-color:rgba(0,201,167,.4);background:rgba(0,201,167,.06)}
+.scanitem.done .k{border-color:var(--accent);color:var(--accent)}
+.scanbarwrap{margin-top:26px;height:5px;border-radius:99px;background:rgba(255,255,255,.07);overflow:hidden}
+.scanbar{height:100%;width:0;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:99px}
+
+/* ---------- gate ---------- */
+.gatecard{margin-top:24px;padding:26px 22px;border-radius:24px;border:1px solid rgba(162,89,255,.3);
+  background:linear-gradient(180deg, rgba(162,89,255,.09), rgba(255,255,255,.03));
+  box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.trust{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:16px}
+.trust span{font-size:11.5px;color:var(--dim);display:flex;align-items:center;gap:6px}
+.trust i{color:var(--accent);font-style:normal}
+
+/* ---------- results ---------- */
+.rep{margin-top:8px}
+.rep .hello{font-size:12px;font-weight:700;letter-spacing:.2em;color:var(--dim);text-align:center}
+.scorehero{display:flex;flex-direction:column;align-items:center;margin:22px 0 6px}
+.ringwrap{position:relative;width:190px;height:190px}
+.ringwrap svg{transform:rotate(-90deg)}
+.ring-bg{stroke:rgba(255,255,255,.07)}
+.ring-fg{stroke:url(#rg);stroke-linecap:round;transition:stroke-dashoffset 1.5s var(--spring);
+  filter:drop-shadow(0 0 10px rgba(162,89,255,.5))}
+.ring-num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ring-num b{font-size:52px;font-weight:700;letter-spacing:-.04em;line-height:1}
+.ring-num span{font-size:12px;color:var(--dim);font-weight:600;letter-spacing:.1em;margin-top:3px}
+.verdict-chip{display:inline-block;margin-top:16px;padding:8px 20px;border-radius:999px;font-size:13.5px;font-weight:700;
+  color:var(--accent);background:rgba(0,201,167,.12);border:1px solid rgba(0,201,167,.4)}
+.verdict-copy{font-size:14.5px;color:var(--muted);line-height:1.8;max-width:540px;margin:18px auto 0;text-align:center}
+.verdict-copy strong{color:var(--text);font-weight:600}
+.rcard{margin-top:26px;padding:22px;border:1px solid var(--border);border-radius:var(--radius);background:var(--card)}
+.rcard h3{font-size:12px;font-weight:700;letter-spacing:.18em;color:var(--dim);margin-bottom:16px}
+.prow{display:grid;grid-template-columns:86px 1fr 52px;align-items:center;gap:12px;margin:11px 0}
+.plabel{font-size:13.5px;font-weight:600;color:var(--muted);display:flex;align-items:center;gap:8px}
+.ptag{display:none;font-size:8.5px;font-weight:800;letter-spacing:.1em;color:#052a22;background:var(--accent);
+  border-radius:6px;padding:2.5px 6px}
+.ptrack{height:8px;border-radius:99px;background:rgba(255,255,255,.06);overflow:hidden}
+.pbar{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--primary),var(--accent));
+  transition:width 1.1s var(--spring)}
+.pbar.low{background:linear-gradient(90deg,var(--danger),#ff8a9e)}
+.pval{font-size:13px;font-weight:700;text-align:right}
+.rx{border-color:rgba(255,93,122,.30);background:linear-gradient(180deg, rgba(255,93,122,.07), rgba(255,255,255,.03))}
+.rx h4{font-size:16.5px;font-weight:700;color:#ff8a9e;letter-spacing:-.01em}
+.rx p{font-size:14px;color:var(--muted);line-height:1.75;margin-top:10px}
+.rx p strong{color:var(--text);font-weight:600}
+.delta{display:none}
+.egrid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.etile{padding:16px;border-radius:16px;border:1px solid var(--border);background:rgba(255,255,255,.03)}
+.etile b{font-size:23px;font-weight:700;letter-spacing:-.02em}
+.etile b span{font-size:12px;color:var(--dim);font-weight:600}
+.etile .eu{font-size:12px;color:var(--dim);margin-top:6px;line-height:1.5}
+.etile.hero-t{grid-column:1/-1;border-color:rgba(0,201,167,.35);background:rgba(0,201,167,.07)}
+.etile.hero-t b{color:var(--accent)}
+.goal-line{font-size:12.5px;color:var(--muted);line-height:1.65;margin-top:12px}
+.reco{border:1px solid rgba(162,89,255,.4);background:linear-gradient(180deg, rgba(162,89,255,.10), rgba(255,255,255,.03));}
+.reco .tier{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.reco .tier b{font-size:21px;font-weight:700;letter-spacing:-.02em}
+.reco .tier span{font-size:13px;color:var(--muted)}
+.reco p{font-size:14px;color:var(--muted);line-height:1.75;margin-top:12px}
+.reco p strong{color:var(--text);font-weight:600}
+.offer{display:none;margin-top:14px;font-size:12.5px;color:var(--gold);border:1px dashed rgba(240,192,64,.4);
+  border-radius:12px;padding:10px 14px;line-height:1.6}
+.offer b{color:var(--gold)}
+.free-card{display:flex;gap:14px;align-items:center;padding:18px;border-radius:var(--radius);
+  border:1px solid rgba(0,201,167,.3);background:rgba(0,201,167,.05);margin-top:26px}
+.free-card .fi{width:42px;height:42px;flex:none;border-radius:12px;background:rgba(0,201,167,.14);
+  display:flex;align-items:center;justify-content:center;font-size:19px}
+.free-card b{font-size:14.5px;font-weight:700}
+.free-card p{font-size:12.5px;color:var(--muted);margin-top:3px;line-height:1.5}
+.free-card a{margin-left:auto;flex:none;font-size:12.5px;font-weight:700;text-decoration:none;color:var(--accent);
+  border:1px solid rgba(0,201,167,.5);padding:9px 14px;border-radius:10px;transition:all .25s}
+.free-card a:hover{background:rgba(0,201,167,.15)}
+.sharerow{display:grid;gap:10px;margin-top:22px}
+.sharebtn{display:flex;align-items:center;justify-content:center;gap:9px;padding:14px;border-radius:14px;
+  border:1px solid var(--border2);background:var(--card2);color:var(--text);font-size:13.5px;font-weight:700;
+  text-decoration:none;cursor:pointer;transition:all .3s var(--spring)}
+.sharebtn:hover{transform:translateY(-2px);border-color:rgba(162,89,255,.5)}
+.sharebtn.purple{background:linear-gradient(135deg,var(--primary),var(--primary-d));border:0;
+  box-shadow:0 10px 30px rgba(162,89,255,.28)}
+.share-split{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.result-actions{display:flex;gap:10px;margin-top:18px}
+.result-actions button{flex:1}
+.legal{font-size:11.5px;color:var(--dim);line-height:1.75;margin-top:28px;text-align:center}
+
+/* ---------- education / faq / refs ---------- */
+.educ{margin-top:64px}
+.educ h2.edh{font-size:clamp(24px,5vw,32px);letter-spacing:-.02em;margin-bottom:8px}
+.educ .edlead{color:var(--muted);font-size:14.5px;line-height:1.8;max-width:640px}
+.educ .edlead strong{color:var(--text)}
+.ecard{margin-top:16px;padding:22px;border:1px solid var(--border);border-radius:var(--radius);background:var(--card)}
+.ecard .ek{font-size:10.5px;font-weight:700;letter-spacing:.2em;color:var(--primary)}
+.ecard h3{font-size:18px;font-weight:700;margin:8px 0 10px;letter-spacing:-.01em}
+.ecard p{font-size:14px;color:var(--muted);line-height:1.8}
+.ecard p strong{color:var(--text);font-weight:600}
+.ecard .eu,sup{color:var(--dim)}
+.faq details{margin-top:10px;border:1px solid var(--border);border-radius:14px;background:var(--card);overflow:hidden}
+.faq summary{cursor:pointer;list-style:none;padding:16px 18px;font-size:14.5px;font-weight:600;
+  display:flex;justify-content:space-between;align-items:center;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--primary);font-size:18px;font-weight:700;flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq .ans{padding:0 18px 16px;font-size:13.5px;color:var(--muted);line-height:1.75}
+.refs li{font-size:12.5px;color:var(--dim);line-height:1.7;margin:9px 0;list-style:none;display:flex;gap:10px}
+.refs li b{color:var(--primary);font-weight:700;flex:none}
+.refs a{color:var(--accent);text-decoration:none;font-weight:600}
+footer{margin-top:56px;padding-top:26px;border-top:1px solid var(--border);text-align:center}
+footer .fbrand{display:flex;flex-direction:column;align-items:center;gap:10px}
+footer .ftag{font-size:10px;letter-spacing:.26em;color:var(--dim);font-weight:700}
+footer .flinks{display:flex;flex-wrap:wrap;gap:8px 16px;justify-content:center;margin:16px 0;font-size:12.5px}
+footer .flinks a{color:var(--muted);text-decoration:none}
+footer .flinks a:hover{color:var(--accent)}
+footer p{font-size:11px;color:var(--dim);line-height:1.8;max-width:560px;margin:0 auto}
+
+@media (max-width:520px){
+  .frow{grid-template-columns:1fr}
+  .egrid{grid-template-columns:1fr 1fr}
+  .prow{grid-template-columns:70px 1fr 46px}
+}
+/* ---------- print: clean white report ---------- */
+@media print{
+  body::before,body::after,.hud,.hero-sec,.step,.scanlist,.result-actions,.sharerow,.educ,footer,.no-print{display:none!important}
+  body{background:#fff;color:#111}
+  .wrap{max-width:640px}
+  .step#step-results.active,#results-root{display:block!important}
+  .rcard,.gatecard{border:1px solid #ddd;background:#fff}
+  .verdict-copy,.rx p,.reco p,.goal-line,.legal,.etile .eu,.plabel,.gate-sub{color:#444!important}
+  .ring-num b,.pval,.etile b,.reco .tier b,h1,h2,h4{color:#111!important}
+  .verdict-chip{color:#0a7c66;border-color:#0a7c66}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HUD PROGRESS ============ -->
+<div class="hud" id="hud">
+  <div class="hud-in">
+    <div class="hud-mark">F</div>
+    <div class="hud-label" id="hud-label">SECTOR <b>00</b>/06</div>
+    <div class="hud-rail"><div class="hud-fill" id="hud-fill"></div></div>
+  </div>
+</div>
+
+<div class="wrap" id="wizard">
+
+  <!-- ============ STEP 0 · HERO ============ -->
+  <div class="step hero-sec active" id="step-0">
+    <div class="brandrow">
+      <div class="logochip">F</div>
+      <div class="brandname">FLOS PROTOCOL</div>
+      <a class="audit-home" href="/" aria-label="FLOS Protocol home">← FLOS Home</a>
+    </div>
+    <div class="kicker"><span class="dot"></span>FREE DIAGNOSTIC · 4 PILLARS</div>
+    <h1>Which pillar is <em>quietly</em> canceling your progress?</h1>
+    <p class="sub">Most people don't fail because they're lazy. They fail because <strong>their system is scattered</strong> — workouts in one app, meals in a note, recovery on vibes, no weekly review. This audit scores your system across the four pillars that decide your next 90 days.</p>
+    <div class="statpills">
+      <span><b>14</b> questions</span>
+      <span>≈ <b>90</b> seconds</span>
+      <span><b>Instant</b> unlock</span>
+      <span><b>Free</b> forever</span>
+    </div>
+    <div class="outcomes">
+      <div class="outcome"><div class="ou-ix">01</div><div><div class="ou-t">Your FLOS Readiness Score /100</div><div class="ou-d">Your entire system, measured across Flow · Load · Output · Sustain</div></div></div>
+      <div class="outcome"><div class="ou-ix">02</div><div><div class="ou-t">Your weakest pillar — named</div><div class="ou-d">The specific leak all your effort is quietly draining out of</div></div></div>
+      <div class="outcome"><div class="ou-ix">03</div><div><div class="ou-t">Your exact energy &amp; protein targets</div><div class="ou-d">Real maintenance calories and daily protein for your 90-day goal (Mifflin-St Jeor)</div></div></div>
+    </div>
+    <div class="resume-note" id="resume-note">
+      ↩ Welcome back — resume your audit where you left off?
+      <button type="button" onclick="resumeAudit()">Resume</button>
+      <button type="button" onclick="dismissResume()">Start fresh</button>
+    </div>
+    <div class="retake-note" id="retake-note">
+      🔁 <b>Retake detected</b> — your baseline is loaded. Finish the audit and your <b>delta report (then vs now)</b> unlocks automatically at the end.
+    </div>
+    <button class="cta" onclick="beginAudit()">Begin the audit <span class="arw">→</span></button>
+    <p class="micro">Unlocks on this page — nothing to wait for · General wellness self-assessment for educational purposes, not medical advice.</p>
+  </div>
+
+  <!-- ============ STEP 1 · BASELINE ============ -->
+  <div class="step" id="step-1">
+    <div class="stepkick">SECTOR <b>01/06</b> · BASELINE</div>
+    <h2>First, your numbers</h2>
+    <p class="stepnote">So we can calculate your real energy targets. Metric units, same as your FLOS scorecard. Used only for the calculation on this page.</p>
+    <div class="qcard">
+      <div class="fields">
+        <div class="fld" id="f-age">
+          <label for="in-age">Age</label>
+          <input id="in-age" type="number" inputmode="numeric" min="13" max="90" placeholder="Years" oninput="checkStep1()" />
+          <div class="err">Enter an age between 13 and 90.</div>
+        </div>
+        <div class="fld" id="f-sex">
+          <label for="in-sex">Biological sex</label>
+          <select id="in-sex" onchange="checkStep1()">
+            <option value="">Select</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+          <div class="err">Select one (required for the formula).</div>
+        </div>
+        <div class="frow">
+          <div class="fld" id="f-height">
+            <label for="in-height">Height (cm)</label>
+            <input id="in-height" type="number" inputmode="decimal" min="120" max="230" placeholder="e.g. 175" oninput="checkStep1()" />
+            <div class="err">Enter a height between 120–230 cm.</div>
+          </div>
+          <div class="fld" id="f-weight">
+            <label for="in-weight">Weight (kg)</label>
+            <input id="in-weight" type="number" inputmode="decimal" min="35" max="250" placeholder="e.g. 75" oninput="checkStep1()" />
+            <div class="err">Enter a weight between 35–250 kg.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="navrow">
+      <button class="cta ghost" onclick="goStep(0)">Back</button>
+      <button class="cta" id="btn-1" disabled onclick="goStep(2)">Continue <span class="arw">→</span></button>
+    </div>
+  </div>
+
+  <!-- ============ STEP 2 · FLOW ============ -->
+  <div class="step" id="step-2">
+    <div class="stepkick">SECTOR <b>02/06</b> · PILLAR I — <span style="color:var(--accent)">FLOW</span></div>
+    <h2>Energy, focus &amp; readiness</h2>
+    <div class="qcard">
+      <div class="qlabel">When you wake up, do you know your energy level for the day?</div>
+      <div class="opts" data-key="flow1">
+        <button type="button" class="opt" data-val="0" data-label="I never really check" onclick="pick(this)"><span class="ix">01</span><span>I never really check<small>Every day feels like a coin toss</small></span></button>
+        <button type="button" class="opt" data-val="1" data-label="I have a rough sense" onclick="pick(this)"><span class="ix">02</span><span>I have a rough sense<small>But I don't record it anywhere</small></span></button>
+        <button type="button" class="opt" data-val="2" data-label="I score it (1–10) most mornings" onclick="pick(this)"><span class="ix">03</span><span>I score it (1–10) most mornings<small>It's a logged habit</small></span></button>
+      </div>
+    </div>
+    <div class="qcard">
+      <div class="qlabel">Before your day starts, how often do you set one clear focus for it?</div>
+      <div class="opts" data-key="flow2">
+        <button type="button" class="opt" data-val="0" data-label="Rarely — the day decides for me" onclick="pick(this)"><span class="ix">01</span>Rarely — the day decides for me</button>
+        <button type="button" class="opt" data-val="1" data-label="Some days, when I remember" onclick="pick(this)"><span class="ix">02</span>Some days, when I remember</button>
+        <button type="button" class="opt" data-val="2" data-label="Daily — one intention, every morning" onclick="pick(this)"><span class="ix">03</span>Daily — one intention, every morning</button>
+      </div>
+    </div>
+    <div class="qcard">
+      <div class="qlabel">Your afternoon energy, in a typical week:</div>
+      <div class="opts" data-key="flow3">
+        <button type="button" class="opt" data-val="0" data-label="I crash most afternoons" onclick="pick(this)"><span class="ix">01</span>I crash most afternoons</button>
+        <button type="button" class="opt" data-val="1" data-label="Inconsistent — good days and dead days" onclick="pick(this)"><span class="ix">02</span>Inconsistent — good days and dead days</button>
+        <button type="button" class="opt" data-val="2" data-label="Mostly stable, morning to night" onclick="pick(this)"><span class="ix">03</span>Mostly stable, morning to night</button>
+      </div>
+    </div>
+    <div class="navrow">
+      <button class="cta ghost" onclick="goStep(1)">Back</button>
+      <button class="cta" id="btn-2" disabled onclick="goStep(3)">Continue <span class="arw">→</span></button>
+    </div>
+  </div>
+
+  <!-- ============ STEP 3 · LOAD ============ -->
+  <div class="step" id="step-3">
+    <div class="stepkick">SECTOR <b>03/06</b> · PILLAR II — <span style="color:var(--accent)">LOAD</span></div>
+    <h2>Training, effort &amp; progression</h2>
+    <div class="qcard">
+      <div class="qlabel">Your training sessions follow…</div>
+      <div class="opts" data-key="load1">
+        <button type="button" class="opt" data-val="0" data-label="Whatever I feel like when I walk in" onclick="pick(this)"><span class="ix">01</span>Whatever I feel like when I walk in</button>
+        <button type="button" class="opt" data-val="1" data-label="A rough split I keep in my head" onclick="pick(this)"><span class="ix">02</span>A rough split I keep in my head</button>
+        <button type="button" class="opt" data-val="2" data-label="A written plan I follow and log" onclick="pick(this)"><span class="ix">03</span>A written plan I follow and log</button>
+      </div>
+    </div>
+    <div class="qcard">
+      <div class="qlabel">After training, do you record how hard it actually felt (RPE 1–10)?</div>
+      <div class="opts" data-key="load2">
+        <button type="button" class="opt" data-val="0" data-label="Never heard of it / never log it" onclick="pick(this)"><span class="ix">01</span>Never heard of it / never log it</button>
+        <button type="button" class="opt" data-val="1" data-label="I note it for key sessions only" onclick="pick(this)"><span class="ix">02</span>I note it for key sessions only</button>
+        <button type="button" class="opt" data-val="2" data-label="Every session, without exception" onclick="pick(this)"><span class="ix">03</span>Every session, without exception</button>
+      </div>
+    </div>
+    <div class="qcard">
+      <div class="qlabel">Compared to 4 weeks ago, are your sessions measurably harder — more weight, reps, or sets?</div>
+      <div class="opts" data-key="load3">
+        <button type="button" class="opt" data-val="0" data-label="No idea — I don't compare" onclick="pick(this)"><span class="ix">01</span>No idea — I don't compare</button>
+        <button type="button" class="opt" data-val="1" data-label="Probably a little, by feel" onclick="pick(this)"><span class="ix">02</span>Probably a little, by feel</button>
+        <button type="button" class="opt" data-val="2" data-label="Yes — I can prove it on paper" onclick="pick(this)"><span class="ix">03</span>Yes — I can prove it on paper</button>
+      </div>
+    </div>
+    <div class="navrow">
+      <button class="cta ghost" onclick="goStep(2)">Back</button>
+      <button class="cta" id="btn-3" disabled onclick="goStep(4)">Continue <span class="arw">→</span></button>
+    </div>
+  </div>
+
+  <!-- ============ STEP 4 · OUTPUT ============ -->
+  <div class="step" id="step-4">
+    <div class="stepkick">SECTOR <b>04/06</b> · PILLAR III — <span style="color:var(--accent)">OUTPUT</span></div>
+    <h2>Calories, macros &amp; compliance</h2>
+    <div class="qcard">
+      <div class="qlabel">Right now — could you say your daily calorie and protein targets as actual numbers?</div>
+      <div class="opts" data-key="out1">
+        <button type="button" class="opt" data-val="0" data-label="No — I just try to eat healthy" onclick="pick(this)"><span class="ix">01</span>No — I just try to "eat healthy"</button>
+        <button type="button" class="opt" data-val="1" data-label="A rough range, from memory" onclick="pick(this)"><span class="ix">02</span>A rough range, from memory</button>
+        <button type="button" class="opt" data-val="2" data-label="Exact numbers — I calculated them" onclick="pick(this)"><span class="ix">03</span>Exact numbers — I calculated them</button>
+      </div>
+    </div>
+    <div class="qcard">
+      <div class="qlabel">Days per week you actually hit your protein target:</div>
+      <div class="opts" data-key="out2">
+        <button type="button" class="opt" data-val="0" data-label="0–2 days" onclick="pick(this)"><span class="ix">01</span><span>0–2 days<small>Protein is whatever happens</small></span></button>
+        <button type="button" class="opt" data-val="1" data-label="3–5 days" onclick="pick(this)"><span class="ix">02</span><span>3–5 days<small>Weekdays yes, weekends no</small></span></button>
+        <button type="button" class="opt" data-val="2" data-label="6–7 days" onclick="pick(this)"><span class="ix">03</span><span>6–7 days<small>Protein first. Always.</small></span></button>
+      </div>
+    </div>
+    <div class="qcard">
+      <div class="qlabel">Your typical daily activity level:</div>
+      <div class="qsub">Calibrates your energy targets — it doesn't change your score.</div>
+      <div class="opts" data-key="activity">
+        <button type="button" class="opt" data-val="1.2" data-label="Sedentary (desk job, little structured exercise)" onclick="pick(this)"><span class="ix">01</span><span>Sedentary<small>Desk job, little structured exercise</small></span></button>
+        <button type="button" class="opt" data-val="1.375" data-label="Lightly active (1–3 workouts per week)" onclick="pick(this)"><span class="ix">02</span><span>Lightly active<small>1–3 workouts per week</small></span></button>
+        <button type="button" class="opt" data-val="1.55" data-label="Moderately active (3–5 workouts per week)" onclick="pick(this)"><span class="ix">03</span><span>Moderately active<small>3–5 workouts per week</small></span></button>
+        <button type="button" class="opt" data-val="1.725" data-label="Very active (6–7 hard workouts per week)" onclick="pick(this)"><span class="ix">04</span><span>Very active<small>6–7 hard workouts per week</small></span></button>
+        <button type="button" class="opt" data-val="1.9" data-label="Extra active (physical job plus daily training)" onclick="pick(this)"><span class="ix">05</span><span>Extra active<small>Physical job plus daily training</small></span></button>
+      </div>
+    </div>
+    <div class="navrow">
+      <button class="cta ghost" onclick="goStep(3)">Back</button>
+      <button class="cta" id="btn-4" disabled onclick="goStep(5)">Continue <span class="arw">→</span></button>
+    </div>
+  </div>
+
+  <!-- ============ STEP 5 · SUSTAIN ============ -->
+  <div class="step" id="step-5">
+    <div class="stepkick">SECTOR <b>05/06</b> · PILLAR IV — <span style="color:var(--accent)">SUSTAIN</span></div>
+    <h2>Recovery, sleep &amp; consistency</h2>
+    <div class="qcard">
+      <div class="qlabel">Your average sleep, honestly:</div>
+      <div class="opts" data-key="sus1">
+        <button type="button" class="opt" data-val="0" data-label="Under 6 hours most nights" onclick="pick(this)"><span class="ix">01</span>Under 6 hours most nights</button>
+        <button type="button" class="opt" data-val="1" data-label="6–7 hours, inconsistent" onclick="pick(this)"><span class="ix">02</span>6–7 hours, inconsistent</button>
+        <button type="button" class="opt" data-val="2" data-label="7–9 hours, most nights" onclick="pick(this)"><span class="ix">03</span>7–9 hours, most nights</button>
+      </div>
+    </div>
+    <div class="qcard">
+      <div class="qlabel">How often do you hit a real hydration target (2.5L+ water)?</div>
+      <div class="opts" data-key="sus2">
+        <button type="button" class="opt" data-val="0" data-label="Rarely — I drink when I remember" onclick="pick(this)"><span class="ix">01</span>Rarely — I drink when I remember</button>
+        <button type="button" class="opt" data-val="1" data-label="Some days I get there" onclick="pick(this)"><span class="ix">02</span>Some days I get there</button>
+        <button type="button" class="opt" data-val="2" data-label="Most days — it's tracked" onclick="pick(this)"><span class="ix">03</span>Most days — it's tracked</button>
+      </div>
+    </div>
+    <div class="qcard">
+      <div class="qlabel">The weekly review: do you sit down and decide what worked and what changes next week?</div>
+      <div class="opts" data-key="sus3">
+        <button type="button" class="opt" data-val="0" data-label="Never — I just repeat the week" onclick="pick(this)"><span class="ix">01</span>Never — I just repeat the week</button>
+        <button type="button" class="opt" data-val="1" data-label="Occasionally, in my head" onclick="pick(this)"><span class="ix">02</span>Occasionally, in my head</button>
+        <button type="button" class="opt" data-val="2" data-label="Every week — a scheduled decision point" onclick="pick(this)"><span class="ix">03</span>Every week — a scheduled decision point</button>
+      </div>
+    </div>
+    <div class="navrow">
+      <button class="cta ghost" onclick="goStep(4)">Back</button>
+      <button class="cta" id="btn-5" disabled onclick="goStep(6)">Continue <span class="arw">→</span></button>
+    </div>
+  </div>
+
+  <!-- ============ STEP 6 · TARGET ============ -->
+  <div class="step" id="step-6">
+    <div class="stepkick">SECTOR <b>06/06</b> · YOUR 90-DAY TARGET</div>
+    <h2>The final two</h2>
+    <div class="qcard">
+      <div class="qlabel">Your primary goal for the next 90 days:</div>
+      <div class="opts" data-key="goal">
+        <button type="button" class="opt" data-val="lose" data-label="Lose fat" onclick="pick(this)"><span class="ix">01</span><span>Lose fat<small>Sustainable deficit, muscle preserved</small></span></button>
+        <button type="button" class="opt" data-val="recomp" data-label="Recompose" onclick="pick(this)"><span class="ix">02</span><span>Recompose<small>Hold weight, trade fat for muscle slowly</small></span></button>
+        <button type="button" class="opt" data-val="build" data-label="Build lean muscle" onclick="pick(this)"><span class="ix">03</span><span>Build lean muscle<small>Small surplus, progressive training</small></span></button>
+      </div>
+    </div>
+    <div class="qcard">
+      <div class="qlabel">What frustrates you most right now?</div>
+      <div class="qsub">The honest one.</div>
+      <div class="opts" data-key="friction">
+        <button type="button" class="opt" data-val="stalled" data-label="I train hard, but nothing changes" onclick="pick(this)"><span class="ix">01</span>I train hard, but nothing changes</button>
+        <button type="button" class="opt" data-val="consistency" data-label="I can't stay consistent past a few weeks" onclick="pick(this)"><span class="ix">02</span>I can't stay consistent past a few weeks</button>
+        <button type="button" class="opt" data-val="nutrition" data-label="I have no idea if I'm eating right" onclick="pick(this)"><span class="ix">03</span>I have no idea if I'm eating right</button>
+        <button type="button" class="opt" data-val="momentum" data-label="I start strong, then quietly lose momentum" onclick="pick(this)"><span class="ix">04</span>I start strong, then quietly lose momentum</button>
+      </div>
+    </div>
+    <div class="navrow">
+      <button class="cta ghost" onclick="goStep(5)">Back</button>
+      <button class="cta" id="btn-6" disabled onclick="runAudit()">Calculate my score <span class="arw">→</span></button>
+    </div>
+  </div>
+
+  <!-- ============ PROCESSING ============ -->
+  <div class="step" id="step-proc">
+    <div class="stepkick">SYSTEM SCAN</div>
+    <h2>Scoring your system…</h2>
+    <div class="scanlist">
+      <div class="scanitem" id="ps1"><span class="k">✓</span>Scoring Flow — energy &amp; focus signals</div>
+      <div class="scanitem" id="ps2"><span class="k">✓</span>Scoring Load — training &amp; effort data</div>
+      <div class="scanitem" id="ps3"><span class="k">✓</span>Scoring Output &amp; Sustain — fuel and recovery</div>
+      <div class="scanitem" id="ps4"><span class="k">✓</span>Calculating energy targets (Mifflin-St Jeor)</div>
+      <div class="scanitem" id="ps5"><span class="k">✓</span>Compiling your readiness report</div>
+    </div>
+    <div class="scanbarwrap"><div class="scanbar" id="scanbar"></div></div>
+  </div>
+
+  <!-- ============ GATE ============ -->
+  <div class="step" id="step-gate">
+    <div class="stepkick">REPORT COMPILED <b>✓</b></div>
+    <h2>Your score and targets are ready.</h2>
+    <p class="stepnote">Where should we send your full pillar breakdown? It <b>unlocks instantly on this page</b> — and a copy lands in your inbox so you can't lose it.</p>
+    <form id="gate-form" class="gatecard" onsubmit="return unlock(event)">
+      <div class="hp"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off" /></label></div>
+      <div class="fields">
+        <div class="fld">
+          <label for="gate-name">First name</label>
+          <input id="gate-name" type="text" autocomplete="given-name" maxlength="80" placeholder="So the report speaks to you" />
+        </div>
+        <div class="fld" id="f-gate-email">
+          <label for="gate-email">Email</label>
+          <input id="gate-email" type="email" autocomplete="email" maxlength="254" placeholder="you@email.com" required />
+          <div class="err" id="gate-email-err">Enter a valid email address.</div>
+        </div>
+      </div>
+      <button class="cta" id="gate-btn" type="submit" style="margin-top:16px">Unlock my report <span class="arw">→</span></button>
+      <div class="trust">
+        <span><i>✓</i> No spam — ever</span>
+        <span><i>✓</i> Unsubscribe anytime</span>
+        <span><i>✓</i> Unlocks instantly, no waiting</span>
+      </div>
+    </form>
+  </div>
+
+  <!-- ============ RESULTS ============ -->
+  <div class="step rep" id="step-results">
+    <div id="results-root">
+      <div class="hello" id="res-hello">Your readiness report</div>
+      <div class="scorehero">
+        <div class="ringwrap">
+          <svg width="190" height="190" viewBox="0 0 190 190">
+            <defs>
+              <linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#a259ff"/>
+                <stop offset="100%" stop-color="#00c9a7"/>
+              </linearGradient>
+            </defs>
+            <circle class="ring-bg" cx="95" cy="95" r="82" fill="none" stroke-width="11"/>
+            <circle class="ring-fg" id="ring-fg" cx="95" cy="95" r="82" fill="none" stroke-width="11"
+              stroke-dasharray="515.2" stroke-dashoffset="515.2"/>
+          </svg>
+          <div class="ring-num"><b id="score-n">0</b><span>/ 100</span></div>
+        </div>
+        <span class="verdict-chip" id="verdict-chip">—</span>
+        <p class="verdict-copy" id="verdict-copy"></p>
+      </div>
+
+      <div class="rcard">
+        <h3>PILLAR BREAKDOWN</h3>
+        <div class="prow" id="row-flow"><div class="plabel">Flow <span class="ptag">WEAKEST</span></div><div class="ptrack"><div class="pbar" id="bar-flow"></div></div><div class="pval"><span id="ps-flow">0</span>/25</div></div>
+        <div class="prow" id="row-load"><div class="plabel">Load <span class="ptag">WEAKEST</span></div><div class="ptrack"><div class="pbar" id="bar-load"></div></div><div class="pval"><span id="ps-load">0</span>/25</div></div>
+        <div class="prow" id="row-output"><div class="plabel">Output <span class="ptag">WEAKEST</span></div><div class="ptrack"><div class="pbar" id="bar-output"></div></div><div class="pval"><span id="ps-output">0</span>/25</div></div>
+        <div class="prow" id="row-sustain"><div class="plabel">Sustain <span class="ptag">WEAKEST</span></div><div class="ptrack"><div class="pbar" id="bar-sustain"></div></div><div class="pval"><span id="ps-sustain">0</span>/25</div></div>
+      </div>
+
+      <div class="rcard rx">
+        <h3>THE LEAK</h3>
+        <h4 id="rx-title">—</h4>
+        <p id="rx-copy"></p>
+      </div>
+
+      <div class="rcard delta" id="delta-card">
+        <h3>YOUR DELTA — THEN vs NOW</h3>
+        <div id="delta-rows"></div>
+        <p class="goal-line">Your new score is now your baseline for the next check-in.</p>
+      </div>
+
+      <div class="rcard">
+        <h3>YOUR ENERGY TARGETS — NEXT 90 DAYS</h3>
+        <div class="egrid">
+          <div class="etile"><b id="ev-bmr">—</b><div class="eu">Resting baseline (BMR) — calories at complete rest. Your floor, not your target.</div></div>
+          <div class="etile"><b id="ev-tdee">—</b><div class="eu" id="ev-tdee-u">Estimated daily burn at your activity level.</div></div>
+          <div class="etile hero-t"><b id="ev-target">—</b><div class="eu"><b id="ev-goal-l" style="font-size:12.5px"></b><br><span id="ev-goal-desc"></span></div></div>
+          <div class="etile hero-t"><b id="ev-protein">—</b><div class="eu">Daily protein target. Hit protein first. Always. Carbs and fats adjust around it.</div></div>
+        </div>
+        <p class="goal-line">Estimates from the Mifflin-St Jeor equation and standard activity multipliers. Bodies vary — which is exactly why the FLOS system pairs targets with a weekly review instead of treating any number as final.</p>
+      </div>
+
+      <div class="rcard reco no-print-buy">
+        <h3>YOUR RECOMMENDED COMMAND LEVEL</h3>
+        <div class="tier"><b id="reco-tier">—</b><span id="reco-price">—</span></div>
+        <p id="reco-copy"></p>
+        <span class="offer" id="reco-offer"></span>
+        <a class="cta" id="reco-cta" href="#" target="_blank" rel="noopener" style="text-decoration:none">See the FLOS Protocol <span class="arw">→</span></a>
+      </div>
+
+      <div class="free-card">
+        <div class="fi">🎁</div>
+        <div>
+          <b>Free: The FLOS Quickstart Card</b>
+          <p>Your week-one anchor — morning flow protocol, RPE scale, and the daily non-negotiables checklist. Printable.</p>
+        </div>
+        <a id="qs-link" href="/free-quickstart.html">Get it free</a>
+      </div>
+
+      <div class="sharerow no-print">
+        <button class="sharebtn purple" id="share-card-btn" onclick="downloadScoreCard()">📸 Download my score card</button>
+        <div class="share-split">
+          <a class="sharebtn" id="share-wa" href="#" target="_blank" rel="noopener">Share on WhatsApp</a>
+          <a class="sharebtn" id="share-x" href="#" target="_blank" rel="noopener">Post on X</a>
+        </div>
+      </div>
+
+      <div class="result-actions no-print">
+        <button class="cta ghost" onclick="window.print()">Save as PDF / print</button>
+        <button class="cta ghost" onclick="retake()">Retake audit</button>
+      </div>
+
+      <p class="legal">The FLOS Readiness Audit is a general wellness self-assessment for educational purposes only. It is not medical advice, diagnosis, or treatment, and its energy and protein figures are population-level estimates, not prescriptions. Consult a physician, registered dietitian, or qualified professional before changing your diet, training, or supplementation. FLOS Protocol · © <span id="yr">2026</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ EDUCATION / SEO ============ -->
+<div class="wide educ">
+  <h2 class="edh">What this audit <em style="color:var(--primary);font-style:italic">actually</em> measures</h2>
+  <p class="edlead">Your score does not grade your body. It measures whether the behaviors that drive results are <strong>visible, explicit, and reviewable</strong> — across the four pillars the FLOS system is built on. Every pillar below is anchored to published evidence, not opinion.</p>
+
+  <div class="ecard">
+    <div class="ek">PILLAR 01 · FLOW</div>
+    <h3>Energy, focus &amp; readiness</h3>
+    <p>Do you know your daily energy, and do you set one clear intent before the day starts? Consistent <strong>self-monitoring</strong> is one of the most replicated predictors of successful weight and behavior outcomes — people who measure, change more. <sup>[9]</sup></p>
+  </div>
+  <div class="ecard">
+    <div class="ek">PILLAR 02 · LOAD</div>
+    <h3>Training, effort &amp; progression</h3>
+    <p>Progressive overload — measurably harder sessions over weeks — is the core variable behind continued adaptation in position-stand guidelines. <sup>[5]</sup> Logging RPE after training is a validated method to autoregulate resistance work. <sup>[6]</sup></p>
+  </div>
+  <div class="ecard">
+    <div class="ek">PILLAR 03 · OUTPUT</div>
+    <h3>Calories, macros &amp; compliance</h3>
+    <p>The <strong>Mifflin–St Jeor</strong> equation predicted resting metabolic rate within 10% of measured values in more adults than Harris–Benedict, Owen, or WHO formulas. <sup>[1][2]</sup> Protein intakes around <strong>1.6–2.2 g/kg/day</strong> maximize resistance-training gains in meta-analysis. <sup>[3][4]</sup></p>
+  </div>
+  <div class="ecard">
+    <div class="ek">PILLAR 04 · SUSTAIN</div>
+    <h3>Sleep, hydration &amp; weekly review</h3>
+    <p>Adults should sleep <strong>7 or more hours</strong> nightly — habitual short sleep is associated with weight gain and impaired performance, per the joint AASM/SRS consensus. <sup>[7]</sup> Adequate total water intake is ≈2.7–3.7&nbsp;L/day from all sources. <sup>[8]</sup></p>
+  </div>
+
+  <div class="ecard">
+    <div class="ek">THE FLOS METHOD</div>
+    <h3>Why targets beat <em style="font-style:italic">tips</em></h3>
+    <p>Most fitness content hands you information with no feedback loop: <strong>a tip cannot tell you whether it worked — a number can</strong>. That is why this audit does not dispense generic advice. It measures whether the behaviors that actually move results are tracked inside your week, then calculates starting targets from validated equations. <sup>[1][2][3]</sup></p>
+    <p style="margin-top:10px">The second difference is the review. Every target is an estimate — a good one <sup>[1]</sup>, but an estimate. The FLOS method pairs each target with a scheduled weekly review, so the plan adapts to your own records instead of pretending a formula knows your body better than four weeks of your data does. Self-monitoring plus adjustment is where adherence actually comes from. <sup>[9]</sup></p>
+    <p style="margin-top:10px">No hacks. No "one weird trick." No fabricated before-and-afters. Visibility, structure, iteration — the unglamorous machinery behind every transformation worth trusting.</p>
+  </div>
+
+  <div class="faq">
+    <h2 class="edh" style="margin-top:40px">Questions, <em style="color:var(--primary);font-style:italic">answered straight</em></h2>
+    <details>
+      <summary>Is the FLOS Readiness Audit really free?</summary>
+      <div class="ans">Yes. The audit is a free educational self-assessment. You answer 14 questions, enter your email to unlock your full pillar breakdown instantly on the page, and a copy of your report is emailed to you. No card is required.</div>
+    </details>
+    <details>
+      <summary>How is my FLOS Readiness Score calculated?</summary>
+      <div class="ans">Your answers are scored across four pillars — Flow, Load, Output and Sustain. Each pillar is normalized to 25 points for a total score out of 100. Your lowest pillar is identified as the weakest link your effort is leaking through, and your verdict and recommendation follow from that score.</div>
+    </details>
+    <details>
+      <summary>Are the calorie and protein targets medical advice?</summary>
+      <div class="ans">No. Targets are population-level estimates from the Mifflin–St Jeor equation and standard activity multipliers, with protein derived from published sports-nutrition meta-analyses. <sup>[1][2][3][4]</sup> They are educational starting points to refine with weekly reviews — not medical advice, diagnosis, or treatment. Consult a physician or registered dietitian before changing your diet or training.</div>
+    </details>
+    <details>
+      <summary>What is the FLOS Protocol?</summary>
+      <div class="ans">FLOS Protocol is a 12-week self-coaching command system for fitness: a protected tracking app, guided launch plan, weekly review tools, macro and RPE references, and a 90-day scorecard — organized into Core, Pro and Elite tiers. This free audit is a working sample of its tracking-and-review method.</div>
+    </details>
+  </div>
+
+  <div class="ecard refs-wrap">
+    <div class="ek">REFERENCES</div>
+    <h3>Every claim traces to a primary source. Check us — that's the point.</h3>
+    <ul class="refs">
+      <li><b>01</b><span>Mifflin MD, St Jeor ST, Hill LA, et al. "A new predictive equation for resting energy expenditure in healthy individuals." <i>American Journal of Clinical Nutrition</i>, 1990. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=A+new+predictive+equation+for+resting+energy+expenditure+in+healthy+individuals" target="_blank" rel="noopener">PubMed ↗</a></span></li>
+      <li><b>02</b><span>Frankenfield D, Roth-Yousey L, Compher C. "Comparison of predictive equations for resting metabolic rate in healthy nonobese and obese adults: a systematic review." <i>Journal of the American Dietetic Association</i>, 2005. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Comparison+of+predictive+equations+for+resting+metabolic+rate+in+healthy+nonobese+and+obese+adults" target="_blank" rel="noopener">PubMed ↗</a></span></li>
+      <li><b>03</b><span>Morton RW, Murphy KT, McKellar SR, et al. "A systematic review, meta-analysis and meta-regression of the effect of protein supplementation on resistance training-induced gains in muscle mass and strength in healthy adults." <i>British Journal of Sports Medicine</i>, 2018. <a href="https://doi.org/10.1136/bjsports-2017-097608" target="_blank" rel="noopener">doi.org ↗</a></span></li>
+      <li><b>04</b><span>Jäger R, Kerksick CM, Campbell BI, et al. "International Society of Sports Nutrition Position Stand: protein and exercise." <i>Journal of the International Society of Sports Nutrition</i>, 2017. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=International+Society+of+Sports+Nutrition+Position+Stand+protein+and+exercise" target="_blank" rel="noopener">PubMed ↗</a></span></li>
+      <li><b>05</b><span>Ratamess NA, Alvar BA, Evetoch TK, et al. (American College of Sports Medicine). "Progression models in resistance training for healthy adults." <i>Medicine &amp; Science in Sports &amp; Exercise</i>, 2009. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Progression+models+in+resistance+training+for+healthy+adults" target="_blank" rel="noopener">PubMed ↗</a></span></li>
+      <li><b>06</b><span>Zourdos MC, Klemp A, Dolan C, et al. "Novel resistance training–specific rating of perceived exertion scale measuring repetitions in reserve." <i>Journal of Strength and Conditioning Research</i>, 2016. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Novel+resistance+training-specific+rating+of+perceived+exertion+scale+repetitions+in+reserve" target="_blank" rel="noopener">PubMed ↗</a></span></li>
+      <li><b>07</b><span>Watson NF, Badr MS, Belenky G, et al. "Recommended amount of sleep for a healthy adult: a joint consensus statement of the American Academy of Sleep Medicine and Sleep Research Society." <i>SLEEP</i>, 2015. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4434546/" target="_blank" rel="noopener">PMC ↗</a></span></li>
+      <li><b>08</b><span>Institute of Medicine. "Dietary Reference Intakes for Water, Potassium, Sodium, Chloride, and Sulfate." National Academies Press, 2005. <a href="https://nap.nationalacademies.org/search/?term=Dietary+Reference+Intakes+for+Water+Potassium+Sodium+Chloride+and+Sulfate" target="_blank" rel="noopener">National Academies ↗</a></span></li>
+      <li><b>09</b><span>Burke LE, Wang J, Sevick MA. "Self-monitoring in weight loss: a systematic review of the literature." <i>Journal of the American Dietetic Association</i>, 2011. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Self-monitoring+in+weight+loss+a+systematic+review+of+the+literature+Burke" target="_blank" rel="noopener">PubMed ↗</a></span></li>
+    </ul>
+  </div>
+</div>
+
+<footer>
+  <div class="wide">
+    <div class="fbrand">
+      <img src="/icon-512.png" alt="FLOS Protocol logo" style="width:44px;height:44px;border-radius:12px" />
+      <div class="ftag">FLOS PROTOCOL<br><span style="letter-spacing:.3em;font-size:9px">SCIENCE · METABOLISM · TRANSFORMATION</span></div>
+    </div>
+    <div class="flinks">
+      <span style="color:var(--dim)">Free tools:</span>
+      <a href="/tools/tdee/">TDEE Calculator</a>
+      <a href="/tools/rpe-scale/">RPE Scale</a>
+      <a href="/tools/protein-target/">Protein Target</a>
+    </div>
+    <p>General wellness self-assessment for educational purposes only — not medical advice, diagnosis, or treatment. Always consult a physician, registered dietitian, or qualified professional before changing diet, training, supplementation, or health routines.</p>
+    <p style="margin-top:12px">© <span id="yr2">2026</span> FLOS Protocol by Mj Revz · <a href="https://flosapp.gumroad.com/l/flos-protocol" target="_blank" rel="noopener">The 12-Week Command System</a> · <a href="/privacy-policy.html" style="color:var(--muted)">Privacy Policy</a></p>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   CONFIG — must stay in sync with the Armored Receiver (v8)
+   ============================================================ */
+const CONFIG = {
+  ENDPOINT_URL: 'https://script.google.com/macros/s/AKfycby-0hK1vCmlKsJKk6bVvnB0j604fSY4VBAnrHtSYv8mEFSYmcX-4_ZO6ZT8UtUIJ4bD/exec',
+  LEAD_TOKEN: 'Pto9iZ1jcl3348XZfJhL60PrfwQuwUoFdpYbsVaHQoTFP95t',
+  GUMROAD_URL: 'https://flosapp.gumroad.com/l/flos-protocol',
+  OFFER_CODE: 'z7q3cx4',
+  QUICKSTART_URL: '/free-quickstart.html',
+  SITE_URL: 'https://flos-protocol.vercel.app/audit/',
+  BRAND: 'FLOS Protocol'
+};
+
+const LS_KEY = 'flosAudit.v1';
+const BL_KEY = 'flosAudit.baseline';
+const SID = Math.random().toString(36).slice(2) + Date.now().toString(36);
+const STEPS_WITH_KEYS = { 2:['flow1','flow2','flow3'], 3:['load1','load2','load3'], 4:['out1','out2','activity'], 5:['sus1','sus2','sus3'], 6:['goal','friction'] };
+
+const state = { step: 0, bio: {}, answers: {}, contact: {}, result: null, baseline: null };
+let _pingedBegin = false;
+
+/* ============================================================
+   SCORING + ENERGY ENGINE  (verified 1:1 against production)
+   ============================================================ */
+const PILLARS = { flow:['flow1','flow2','flow3'], load:['load1','load2','load3'], output:['out1','out2'], sustain:['sus1','sus2','sus3'] };
+function pillarScore(keys, rawMax){
+  const pts = keys.reduce((s,k)=> s + parseInt(state.answers[k].value,10), 0);
+  return { pts, norm: Math.round((pts/rawMax)*25) };
+}
+function compute(){
+  const flow = pillarScore(PILLARS.flow,6), load = pillarScore(PILLARS.load,6),
+        output = pillarScore(PILLARS.output,4), sustain = pillarScore(PILLARS.sustain,6);
+  const pillars = { flow:flow.norm, load:load.norm, output:output.norm, sustain:sustain.norm };
+  const total = flow.norm + load.norm + output.norm + sustain.norm;
+  const weakest = Object.keys(pillars).reduce((a,b)=> pillars[a] <= pillars[b] ? a : b);
+
+  const { age, height, weight, sex } = state.bio;
+  const actFactor = parseFloat(state.answers.activity.value);
+  const actLabel  = state.answers.activity.label;
+  const bmr  = 10*weight + 6.25*height - 5*age + (sex==='male' ? 5 : -161);
+  const tdee = bmr * actFactor;
+  const goal = state.answers.goal.value;
+  const mult = goal==='lose' ? 0.85 : goal==='build' ? 1.10 : 1.00;
+
+  // BMI-aware protein engine (verified against production)
+  const height_m = height/100;
+  const bmi = weight/(height_m*height_m);
+  let pKg = goal==='lose' ? 2.2 : goal==='build' ? 1.8 : 2.0;
+  if (bmi >= 30)      pKg = goal==='lose' ? 1.6 : goal==='build' ? 1.5 : 1.6;
+  else if (bmi >= 25) pKg = goal==='lose' ? 1.8 : goal==='build' ? 1.6 : 1.8;
+  let protein = Math.round(weight * pKg);
+  if (protein > 210) protein = 210;
+  if (protein < 90)  protein = 90;
+
+  const energy = { bmr:Math.round(bmr), tdee:Math.round(tdee), target:Math.round(tdee*mult), protein, actFactor, actLabel, goal };
+
+  let verdict, tier;
+  if (total <= 40)      { verdict='guesswork';  tier='core'; }
+  else if (total <= 60) { verdict='halfsystem'; tier='pro'; }
+  else if (total <= 80) { verdict='builder';    tier='pro'; }
+  else                  { verdict='command';    tier='elite'; }
+
+  state.result = { pillars, total, weakest, energy, verdict, tier };
+  return state.result;
+}
+
+const VERDICTS = {
+  guesswork:  { name:'Running on Guesswork', copy:'You are not unmotivated — you are <strong>unmeasured</strong>. Right now you are spending real effort on training and food, with no system catching the return. The fastest progress of your life is available the moment your basics become visible. Start clean, start small, start tracked.' },
+  halfsystem: { name:'Half a System',        copy:'Parts of your system work — but <strong>the gaps between them cancel each other out</strong>. You log some things, guess the rest, and never get a clear next move. You don\'t need more discipline. You need the four pillars connected into one weekly loop.' },
+  builder:    { name:'System Builder',       copy:'Your inputs are there. Your <strong>feedback loop isn\'t</strong>. Without a weekly review, data is just trivia — you\'re collecting numbers and still guessing the next adjustment. One structured review per week is the difference between repeating 12 weeks and compounding them.' },
+  command:    { name:'Command Ready',        copy:'You operate at a level most people never reach — <strong>the basics are already a system</strong>. Your next gains won\'t come from more effort; they\'ll come from advanced protocol design: planned phases, custom cycles, deeper control. You\'ve earned the advanced tier.' }
+};
+const LEAKS = {
+  flow:    { title:'Flow is your weakest pillar',    copy:'Your effort leaks out through <strong>unmanaged energy</strong>. You train and eat with no read on readiness — so hard days land on empty batteries and good days go underused. Fix: score your energy 1–10 every morning and set one focus intent before the day starts. Sixty seconds. It changes what you get out of everything else.' },
+  load:    { title:'Load is your weakest pillar',    copy:'Your effort leaks out through <strong>unmeasured training</strong>. Without a written plan and an RPE log, you can\'t prove progression — and what can\'t be proven can\'t be repeated or improved. Fix: log RPE after every session this week. One number per session. That one habit starts the progressive-overload flywheel.' },
+  output:  { title:'Output is your weakest pillar',  copy:'Your effort leaks out through <strong>unmanaged fuel</strong>. Training without knowing your calorie and protein numbers is like loading a truck with no cargo list — work happens, results don\'t. Fix: use the targets in this report for 7 days. Protein first, always. Track the number, not the vibe.' },
+  sustain: { title:'Sustain is your weakest pillar', copy:'Your effort leaks out through <strong>recovery and review</strong>. Sleep, hydration, and a weekly review decide whether this week\'s work compounds or evaporates. Fix: one 10-minute weekly review — what worked, what changes. That single habit is the engine of the entire FLOS protocol.' }
+};
+const TIERS = {
+  core:  { name:'FLOS Core',  price:'$27', copy:'Your score says: don\'t overload — install basics. <strong>Core gives you the protected FLOS app and a guided first-week launch</strong> so you start tracked from day one without drowning in features. The 90-day cycle begins the moment you log your first morning.' },
+  pro:   { name:'FLOS Pro',   price:'$67', copy:'Your score says: you don\'t need more information — you need <strong>a complete loop</strong>. Pro is the full 12-week command system: the protected app, playbook, daily tracker, weekly review tools, macro and RPE references, and the 90-day scorecard that turns your numbers into decisions.' },
+  elite: { name:'FLOS Elite', price:'$97', copy:'Your score says: basics are already handled — <strong>you need control</strong>. Elite unlocks the full vault: advanced protocol templates and the custom protocol builder, so every future 12-week cycle is designed by you, for you. Your readiness report becomes your baseline.' }
+};
+const GOAL_LINES = {
+  lose:   'A sustainable deficit (~15% below maintenance) — aggressive enough to move, conservative enough to keep muscle.',
+  recomp: 'Maintenance calories — the slow trade of fat for muscle, powered by training progression and high protein.',
+  build:  'A lean surplus (~10% above maintenance) — enough to build, small enough to stay lean.'
+};
+
+/* ============================================================
+   ANALYTICS PING (token-guarded events, v8-compatible)
+   ============================================================ */
+function ping(event, meta){
+  try{
+    if (event === 'begin'){ if (_pingedBegin) return; _pingedBegin = true; }
+    const q = new URLSearchParams(location.search);
+    const body = JSON.stringify({
+      type:'event', brand:CONFIG.BRAND, token:CONFIG.LEAD_TOKEN,
+      timestamp:new Date().toISOString(), event:event, meta:String(meta||''), session:SID,
+      utm_source:q.get('utm_source')||'', utm_medium:q.get('utm_medium')||'', utm_campaign:q.get('utm_campaign')||'',
+      page:location.href
+    });
+    fetch(CONFIG.ENDPOINT_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body }).catch(()=>{});
+  }catch(e){}
+}
+
+/* ============================================================
+   NAVIGATION / STEPS
+   ============================================================ */
+const SECTOR = { 1:'BASELINE', 2:'PILLAR I · FLOW', 3:'PILLAR II · LOAD', 4:'PILLAR III · OUTPUT', 5:'PILLAR IV · SUSTAIN', 6:'TARGET' };
+function hud(n){
+  const h = document.getElementById('hud');
+  if (n === 0){ h.classList.remove('on'); return; }
+  h.classList.add('on');
+  document.getElementById('hud-label').innerHTML = 'SECTOR <b>0' + n + '</b>/06 · ' + (SECTOR[n] || '');
+  document.getElementById('hud-fill').style.width = Math.round(n/6*100) + '%';
+}
+function goStep(n){
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  const target = document.getElementById('step-' + (typeof n === 'number' ? n : n));
+  target.classList.add('active');
+  state.step = (typeof n === 'number') ? n : 99;
+  persist();
+  hud(typeof n === 'number' ? n : (n === 'gate' || n === 'results' ? 6 : 6));
+  window.scrollTo({ top:0, behavior:'smooth' });
+  const first = target.querySelector('input, select');
+  if (first && typeof n === 'number' && n > 0) setTimeout(()=>first.focus({ preventScroll:true }), 400);
+  if (n === 'results') hud(6);
+}
+function beginAudit(){ ping('begin'); goStep(1); }
+
+function pick(btn){
+  const group = btn.closest('.opts');
+  group.querySelectorAll('.opt').forEach(b=>{ b.classList.remove('sel'); b.setAttribute('aria-checked','false'); });
+  btn.classList.add('sel'); btn.setAttribute('aria-checked','true');
+  const key = group.dataset.key;
+  state.answers[key] = { value: btn.dataset.val, label: btn.dataset.label || btn.textContent.trim().replace(/\s+/g,' ') };
+  persist();
+  const step = group.closest('.step');
+  const n = parseInt(step.id.replace('step-',''),10);
+  const done = STEPS_WITH_KEYS[n].every(k=> state.answers[k] !== undefined);
+  document.getElementById('btn-' + n).disabled = !done;
+}
+
+function bounded(id, min, max){
+  const el = document.getElementById(id);
+  const v = parseFloat(el.value);
+  const ok = el.value !== '' && !isNaN(v) && v >= min && v <= max;
+  document.getElementById(el.id.replace('in-','f-')).classList.toggle('invalid', el.value !== '' && !ok);
+  return ok ? v : null;
+}
+function checkStep1(){
+  const age = bounded('in-age',13,90);
+  const h = bounded('in-height',120,230);
+  const w = bounded('in-weight',35,250);
+  const sex = document.getElementById('in-sex').value;
+  state.bio = { age, height:h, weight:w, sex: sex || null };
+  persist();
+  document.getElementById('btn-1').disabled = !(age && h && w && sex);
+}
+
+/* ---------- session persist + soft resume ---------- */
+function persist(){ try{ localStorage.setItem(LS_KEY, JSON.stringify({ step:state.step, bio:state.bio, answers:state.answers })); }catch(e){} }
+function checkSaved(){
+  try{
+    const saved = JSON.parse(localStorage.getItem(LS_KEY) || 'null');
+    if (saved && saved.step > 0 && saved.step <= 6){
+      state._saved = saved;
+      document.getElementById('resume-note').style.display = 'block';
+    }
+  }catch(e){}
+}
+function resumeAudit(){
+  const saved = state._saved; if (!saved) return goStep(1);
+  state.bio = saved.bio || {}; state.answers = saved.answers || {};
+  Object.keys(state.answers).forEach(k=>{
+    const g = document.querySelector('.opts[data-key="' + k + '"]');
+    if (g){ const b = g.querySelector('.opt[data-val="' + state.answers[k].value + '"]'); if (b) b.classList.add('sel'); }
+  });
+  document.getElementById('in-sex').value = state.bio.sex || '';
+  ['age','height','weight'].forEach(k=>{ if (state.bio[k]) document.getElementById('in-' + k).value = state.bio[k]; });
+  checkStep1();
+  Object.keys(STEPS_WITH_KEYS).forEach(n=>{
+    const done = STEPS_WITH_KEYS[n].every(k=> state.answers[k] !== undefined);
+    const b = document.getElementById('btn-' + n); if (b) b.disabled = !done;
+  });
+  document.getElementById('resume-note').style.display = 'none';
+  ping('resume', saved.step);
+  goStep(saved.step);
+}
+function dismissResume(){
+  try{ localStorage.removeItem(LS_KEY); }catch(e){}
+  state._saved = null;
+  document.getElementById('resume-note').style.display = 'none';
+}
+
+/* ============================================================
+   PROCESSING
+   ============================================================ */
+function runAudit(){
+  // Security: compute() intentionally NOT called yet — nothing readable pre-gate.
+  goStep('proc');
+  const bar = document.getElementById('scanbar');
+  requestAnimationFrame(()=>{ bar.style.transition = 'width 2.9s cubic-bezier(.4,0,.2,1)'; bar.style.width = '100%'; });
+  ['ps1','ps2','ps3','ps4','ps5'].forEach((id,i)=>{
+    setTimeout(()=>{ const el = document.getElementById(id); el.classList.add('done'); }, 480*(i+1));
+  });
+  setTimeout(()=>goStep('gate'), 480*5 + 650);
+}
+
+/* ============================================================
+   EMAIL VALIDATION (mirrors the server bouncer)
+   ============================================================ */
+const FRONT_DISPOSABLE = ['mailinator.com','maildrop.cc','10minutemail.com','tempmail.com','temp-mail.org','guerrillamail.com','yopmail.com','trashmail.com','fakeinbox.com','sharklasers.com','grr.la','getnada.com','mohmal.com','tempinbox.com','emailondeck.com','mintemail.com','throwawaymail.com','mailnesia.com','mytemp.email','tempmailo.com','burnermail.io','inboxkitten.com'];
+const FRONT_TYPOS = { 'gmial.com':'gmail.com','gmal.com':'gmail.com','gamil.com':'gmail.com','gmeil.com':'gmail.com','gmail.co':'gmail.com','gmali.com':'gmail.com','hotmial.com':'hotmail.com','hotmal.com':'hotmail.com','hotmail.co':'hotmail.com','outlok.com':'outlook.com','outloook.com':'outlook.com','yaho.com':'yahoo.com','yahooo.com':'yahoo.com','yhoo.com':'yahoo.com','icloud.co':'icloud.com','iclod.com':'icloud.com','icloud.cm':'icloud.com' };
+function validateEmailClient(raw){
+  const email = String(raw||'').trim().toLowerCase();
+  const fmt = /^[a-z0-9!#$%&'*+/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?([.][a-z0-9]([a-z0-9-]*[a-z0-9])?)+$/;
+  const local = email.split('@')[0] || '';
+  const dotTrap = local.charAt(0) === '.' || local.slice(-1) === '.' || email.indexOf('..') > -1;
+  if (!fmt.test(email) || dotTrap || email.length > 254) return { ok:false, msg:"That email doesn't look right — double-check the spelling." };
+  const domain = email.split('@')[1];
+  if (FRONT_DISPOSABLE.indexOf(domain) > -1) return { ok:false, msg:'Disposable inboxes are blocked — use your real email. Your report copy arrives there instantly.' };
+  if (FRONT_TYPOS[domain]) return { ok:false, msg:'Did you mean ' + email.split('@')[0] + '@' + FRONT_TYPOS[domain] + '?' };
+  return { ok:true, email:email };
+}
+
+/* ============================================================
+   GATE → UNLOCK → SEND LEAD (v8 armored payload: includes honeypot)
+   ============================================================ */
+function unlock(e){
+  e.preventDefault();
+  const hp = document.querySelector('#gate-form input[name="company"]').value;
+  if (hp) return false;
+  const name = document.getElementById('gate-name').value.trim();
+  const emailRaw = document.getElementById('gate-email').value.trim();
+  const fieldWrap = document.getElementById('f-gate-email');
+  const errEl = document.getElementById('gate-email-err');
+  const check = validateEmailClient(emailRaw);
+  if (!check.ok){
+    errEl.textContent = check.msg;
+    fieldWrap.classList.add('invalid');
+    document.getElementById('gate-email').focus();
+    return false;
+  }
+  fieldWrap.classList.remove('invalid');
+  state.contact = { name:name, email:check.email };
+  const btn = document.getElementById('gate-btn');
+  btn.disabled = true; btn.innerHTML = 'Unlocking…';
+  compute();           // unlocks + computes only after email passes
+  sendLead();
+  renderResults();
+  goStep('results');
+  return false;
+}
+
+function sendLead(){
+  const r = state.result;
+  const q = new URLSearchParams(location.search);
+  const payload = {
+    brand: CONFIG.BRAND,
+    token: CONFIG.LEAD_TOKEN,
+    company: '',                                                    // v8 server-side honeypot (humans: always empty)
+    timestamp: new Date().toISOString(),
+    name: state.contact.name, email: state.contact.email,
+    age: state.bio.age, sex: state.bio.sex, height_cm: state.bio.height, weight_kg: state.bio.weight,
+    activity: r.energy.actLabel, goal: state.answers.goal.label, friction: state.answers.friction.label,
+    answers: Object.fromEntries(Object.entries(state.answers).map(([k,v])=>[k, v.value])),
+    score_flow: r.pillars.flow, score_load: r.pillars.load, score_output: r.pillars.output, score_sustain: r.pillars.sustain,
+    score_total: r.total, weakest_pillar: r.weakest, verdict: VERDICTS[r.verdict].name, recommended_tier: TIERS[r.tier].name,
+    bmr: r.energy.bmr, tdee: r.energy.tdee, calorie_target: r.energy.target, protein_target_g: r.energy.protein,
+    utm_source: q.get('utm_source')||'', utm_medium: q.get('utm_medium')||'', utm_campaign: q.get('utm_campaign')||'',
+    page: location.href
+  };
+  const done = ()=>{ try{ localStorage.removeItem(LS_KEY); }catch(e){} };
+  const body = JSON.stringify(payload);
+  fetch(CONFIG.ENDPOINT_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body })
+    .catch(()=>{ try{ localStorage.setItem(LS_KEY + '.queued', body); }catch(e){} })
+    .finally(done);
+}
+
+/* ============================================================
+   RESULTS RENDER
+   ============================================================ */
+function renderResults(){
+  const r = state.result;
+  const c = state.contact;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  document.getElementById('res-hello').textContent = (c.name ? c.name + ' — your' : 'Your') + ' readiness report';
+
+  const circ = 515.2;
+  const ring = document.getElementById('ring-fg');
+  const nEl = document.getElementById('score-n');
+  if (reduced){
+    ring.style.strokeDashoffset = circ * (1 - r.total/100);
+    nEl.textContent = r.total;
+  } else {
+    requestAnimationFrame(()=>{ ring.style.strokeDashoffset = circ * (1 - r.total/100); });
+    const t0 = performance.now(), dur = 1500;
+    (function tick(t){
+      const p = Math.min(1,(t - t0)/dur), e2 = 1 - Math.pow(1-p,3);
+      nEl.textContent = Math.round(e2 * r.total);
+      if (p < 1) requestAnimationFrame(tick);
+    })(t0);
+  }
+
+  document.getElementById('verdict-chip').textContent = VERDICTS[r.verdict].name;
+  document.getElementById('verdict-copy').innerHTML = VERDICTS[r.verdict].copy;
+
+  ['flow','load','output','sustain'].forEach((p,i)=>{
+    const v = r.pillars[p], pct = (v/25)*100;
+    document.getElementById('ps-' + p).textContent = v;
+    const bar = document.getElementById('bar-' + p);
+    if (v <= 10) bar.classList.add('low');
+    setTimeout(()=>{ bar.style.width = Math.max(pct,3) + '%'; }, reduced ? 0 : 200 + i*140);
+    document.querySelector('#row-' + p + ' .ptag').style.display = (p === r.weakest) ? 'inline-block' : 'none';
+  });
+
+  document.getElementById('rx-title').textContent = LEAKS[r.weakest].title;
+  document.getElementById('rx-copy').innerHTML = LEAKS[r.weakest].copy;
+
+  const fmt = n => n.toLocaleString();
+  document.getElementById('ev-bmr').innerHTML = fmt(r.energy.bmr) + ' <span>kcal</span>';
+  document.getElementById('ev-tdee').innerHTML = fmt(r.energy.tdee) + ' <span>kcal</span>';
+  document.getElementById('ev-tdee-u').textContent = 'Estimated daily burn — ' + r.energy.actLabel.toLowerCase().replace(/ \(.*$/,'') + '.';
+  document.getElementById('ev-target').innerHTML = fmt(r.energy.target) + ' <span>kcal</span>';
+  document.getElementById('ev-protein').innerHTML = fmt(r.energy.protein) + ' <span>g / day</span>';
+  document.getElementById('ev-goal-l').textContent = ({ lose:'Fat-loss target', recomp:'Recomp target', build:'Lean-build target' })[r.energy.goal];
+  document.getElementById('ev-goal-desc').textContent = GOAL_LINES[r.energy.goal];
+
+  const T = TIERS[r.tier];
+  document.getElementById('reco-tier').textContent = T.name;
+  document.getElementById('reco-price').textContent = T.price + ' · one-time · 30-day guarantee';
+  document.getElementById('reco-copy').innerHTML = T.copy;
+  document.getElementById('reco-cta').href = CONFIG.GUMROAD_URL + (CONFIG.OFFER_CODE ? '/' + CONFIG.OFFER_CODE : '');
+  if (CONFIG.OFFER_CODE){
+    const chip = document.getElementById('reco-offer');
+    chip.style.display = 'inline-block';
+    chip.innerHTML = '10% audit discount auto-applied at checkout — your code: <b>' + CONFIG.OFFER_CODE + '</b>';
+  }
+  const qs = document.getElementById('qs-link');
+  if (CONFIG.QUICKSTART_URL) qs.href = CONFIG.QUICKSTART_URL;
+
+  setupShareLinks();
+  renderDelta();
+  saveBaseline();
+  ping('results', r.total);
+}
+
+function retake(){
+  try{ localStorage.removeItem(LS_KEY); }catch(e){}
+  location.href = location.pathname;
+}
+
+/* ============================================================
+   BASELINE + DELTA (retake engine)
+   ============================================================ */
+function saveBaseline(){
+  try{
+    const r = state.result;
+    localStorage.setItem(BL_KEY, JSON.stringify({
+      email: state.contact.email,
+      total: r.total, pillars: r.pillars, weakest: r.weakest,
+      verdict: r.verdict, tier: r.tier, at: new Date().toISOString()
+    }));
+  }catch(e){}
+}
+function renderDelta(){
+  try{
+    const bl = state.baseline || JSON.parse(localStorage.getItem(BL_KEY) || 'null');
+    if (!bl || !bl.pillars) return;
+    const r = state.result;
+    if (bl.email && state.contact.email && bl.email === state.contact.email && bl.at === undefined){ /* same-submission guard */ }
+    const rows = [['Total score', bl.total, r.total, 100]]
+      .concat(['flow','load','output','sustain'].map(p=>[ p.charAt(0).toUpperCase()+p.slice(1), bl.pillars[p], r.pillars[p], 25 ]));
+    let anyChange = false;
+    let html = '';
+    rows.forEach(([label, oldV, newV, max])=>{
+      oldV = Number(oldV); newV = Number(newV);
+      if (isNaN(oldV) || isNaN(newV)) return;
+      let arrow = '<span style="color:var(--dim)">→</span>', cls = 'var(--dim)', diff = newV - oldV;
+      if (diff > 0){ arrow = '▲'; cls = 'var(--accent)'; anyChange = true; }
+      else if (diff < 0){ arrow = '▼'; cls = 'var(--danger)'; anyChange = true; }
+      html += '<div class="prow"><div class="plabel">' + label + '</div>' +
+        '<div style="font-size:13px;color:var(--muted)">' + oldV + '/' + max + ' <span style="color:' + cls + ';font-weight:700">' + arrow + ' ' + (diff > 0 ? '+' : '') + diff + '</span></div>' +
+        '<div class="pval">' + newV + '/' + max + '</div></div>';
+    });
+    if (!html) return;
+    document.getElementById('delta-rows').innerHTML = html;
+    document.getElementById('delta-card').style.display = 'block';
+    ping('delta', anyChange ? 'moved' : 'flat');
+  }catch(e){}
+}
+
+/* On retake visits (?retake=1&email=…), preload baseline from the armored receiver */
+(function preloadBaseline(){
+  try{
+    const q = new URLSearchParams(location.search);
+    if (q.get('retake') !== '1') return;
+    const email = (q.get('email') || '').trim().toLowerCase();
+    if (!email) return;
+    document.getElementById('retake-note').style.display = 'block';
+    fetch(CONFIG.ENDPOINT_URL + '?action=get_baseline&email=' + encodeURIComponent(email))
+      .then(r=>r.json())
+      .then(data=>{
+        if (data && data.ok && data.baseline){
+          const b = data.baseline;
+          state.baseline = {
+            email: email,
+            total: Number(b.score_total),
+            pillars: { flow:Number(b.score_flow), load:Number(b.score_load), output:Number(b.score_output), sustain:Number(b.score_sustain) },
+            weakest: b.weakest_pillar, verdict: b.verdict, tier: b.recommended_tier
+          };
+        }
+      })
+      .catch(()=>{});
+  }catch(e){}
+})();
+
+/* ============================================================
+   SHARE ENGINE (links + canvas score card)
+   ============================================================ */
+function shareText(){
+  const r = state.result || compute();
+  const url = CONFIG.SITE_URL + '?utm_source=scorecard&utm_medium=share';
+  return 'My FLOS Readiness Score: ' + r.total + '/100 — "' + VERDICTS[r.verdict].name + '".\n' +
+         'Weakest pillar: ' + r.weakest.toUpperCase() + ' — that is where my effort has been leaking.\n' +
+         'Which pillar is quietly canceling YOUR progress? Free 90-second audit:\n' + url;
+}
+function setupShareLinks(){
+  const t = encodeURIComponent(shareText());
+  document.getElementById('share-wa').href = 'https://wa.me/?text=' + t;
+  document.getElementById('share-x').href = 'https://twitter.com/intent/tweet?text=' + t;
+}
+
+function rr(ctx,x,y,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r);
+  ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath();
+}
+function downloadScoreCard(){
+  const r = state.result; if (!r) return;
+  ping('share','card');
+  const S = 1080, cv = document.createElement('canvas');
+  cv.width = S; cv.height = S;
+  const x = cv.getContext('2d');
+
+  x.fillStyle = '#0a0a0f'; x.fillRect(0,0,S,S);
+  let g = x.createRadialGradient(240,200,40, 240,200,560); g.addColorStop(0,'rgba(162,89,255,.34)'); g.addColorStop(1,'rgba(162,89,255,0)');
+  x.fillStyle = g; x.fillRect(0,0,S,S);
+  g = x.createRadialGradient(880,900,40, 880,900,560); g.addColorStop(0,'rgba(0,201,167,.24)'); g.addColorStop(1,'rgba(0,201,167,0)');
+  x.fillStyle = g; x.fillRect(0,0,S,S);
+
+  // brand chip
+  const lg = x.createLinearGradient(70,70,150,150); lg.addColorStop(0,'#a259ff'); lg.addColorStop(1,'#7c3aed');
+  x.fillStyle = lg; rr(x,70,64,76,76,20); x.fill();
+  x.fillStyle = '#fff'; x.font = '700 42px "Space Grotesk", system-ui, sans-serif';
+  x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText('F', 108, 104);
+  x.textAlign = 'left'; x.fillStyle = 'rgba(244,244,250,.55)'; x.font = '700 22px "Space Grotesk", system-ui, sans-serif';
+  x.fillText('F L O S   R E A D I N E S S   A U D I T', 168, 104);
+
+  // score
+  x.textAlign = 'center';
+  x.fillStyle = 'rgba(244,244,250,.5)'; x.font = '700 24px "Space Grotesk", system-ui, sans-serif';
+  x.fillText('M Y   R E A D I N E S S   S C O R E', S/2, 300);
+  const sg = x.createLinearGradient(S/2-160,360,S/2+160,520); sg.addColorStop(0,'#a259ff'); sg.addColorStop(1,'#00c9a7');
+  x.fillStyle = sg; x.font = '700 210px "Space Grotesk", system-ui, sans-serif'; x.textBaseline = 'alphabetic';
+  x.fillText(String(r.total), S/2, 510);
+  x.fillStyle = 'rgba(244,244,250,.45)'; x.font = '600 30px "Space Grotesk", system-ui, sans-serif';
+  x.fillText('/ 100', S/2, 556);
+
+  // verdict chip
+  const v = VERDICTS[r.verdict].name;
+  x.font = '700 26px "Space Grotesk", system-ui, sans-serif';
+  const vw = x.measureText(v).width + 68;
+  x.fillStyle = 'rgba(0,201,167,.14)'; rr(x, S/2 - vw/2, 596, vw, 58, 29); x.fill();
+  x.strokeStyle = 'rgba(0,201,167,.55)'; x.lineWidth = 2; rr(x, S/2 - vw/2, 596, vw, 58, 29); x.stroke();
+  x.fillStyle = '#00c9a7'; x.fillText(v, S/2, 636);
+
+  // pillar bars
+  const names = { flow:'FLOW', load:'LOAD', output:'OUTPUT', sustain:'SUSTAIN' };
+  let y = 740;
+  Object.keys(names).forEach(p=>{
+    const val = r.pillars[p], wRatio = Math.max(val/25, .04);
+    x.textAlign = 'left';
+    x.fillStyle = p === r.weakest ? '#ff8a9e' : 'rgba(244,244,250,.75)';
+    x.font = '700 24px "Space Grotesk", system-ui, sans-serif';
+    x.fillText(names[p] + (p === r.weakest ? '  ·  WEAKEST' : ''), 110, y - 14);
+    x.textAlign = 'right';
+    x.fillStyle = 'rgba(244,244,250,.55)'; x.font = '700 24px "Space Grotesk", system-ui, sans-serif';
+    x.fillText(val + '/25', S - 110, y - 14);
+    x.fillStyle = 'rgba(255,255,255,.07)'; rr(x, 110, y, S - 220, 16, 8); x.fill();
+    const bg2 = x.createLinearGradient(110,y,110 + (S-220)*wRatio,y);
+    if (p === r.weakest){ bg2.addColorStop(0,'#ff5d7a'); bg2.addColorStop(1,'#ff8a9e'); }
+    else { bg2.addColorStop(0,'#a259ff'); bg2.addColorStop(1,'#00c9a7'); }
+    x.fillStyle = bg2; rr(x, 110, y, (S - 220) * wRatio, 16, 8); x.fill();
+    y += 82;
+  });
+
+  x.textAlign = 'center';
+  x.fillStyle = 'rgba(244,244,250,.4)'; x.font = '600 21px "Space Grotesk", system-ui, sans-serif';
+  x.fillText('Which pillar is quietly canceling YOUR progress?', S/2, 990);
+  x.fillStyle = '#00c9a7'; x.font = '700 24px "Space Grotesk", system-ui, sans-serif';
+  x.fillText('flos-protocol.vercel.app/audit', S/2, 1026);
+
+  cv.toBlob(blob=>{
+    if (!blob) return;
+    const file = new File([blob], 'flos-readiness-score.png', { type:'image/png' });
+    if (navigator.canShare && navigator.canShare({ files:[file] })){
+      navigator.share({ files:[file], text:shareText() }).catch(()=>{});
+      return;
+    }
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'flos-readiness-score.png';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(a.href), 4000);
+  }, 'image/png');
+}
+
+/* ============================================================
+   BOOT
+   ============================================================ */
+document.getElementById('yr').textContent = new Date().getFullYear();
+document.getElementById('yr2').textContent = new Date().getFullYear();
+checkSaved();
+</script>
+</body>
+</html>

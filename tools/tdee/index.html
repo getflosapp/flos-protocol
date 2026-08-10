@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TDEE Calculator (Mifflin-St Jeor) — Free Maintenance Calorie Tool | FLOS Protocol</title>
+<meta name="description" content="Free TDEE calculator using the Mifflin-St Jeor equation. Get your real maintenance calories, then fat-loss, recomp, and lean-build targets — with the research behind every number.">
+<link rel="canonical" href="https://flos-protocol.vercel.app/tools/tdee/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FLOS Protocol">
+<meta property="og:title" content="TDEE Calculator — Mifflin-St Jeor, free | FLOS Protocol">
+<meta property="og:description" content="Your real maintenance calories in 10 seconds — then fat-loss, recomp, and lean-build targets. Evidence-based, no signup.">
+<meta property="og:url" content="https://flos-protocol.vercel.app/tools/tdee/">
+<meta property="og:image" content="https://flos-protocol.vercel.app/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16.png">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "WebApplication", "name": "FLOS TDEE Calculator (Mifflin-St Jeor)",
+      "url": "https://flos-protocol.vercel.app/tools/tdee/",
+      "applicationCategory": "HealthApplication", "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "description": "Free total daily energy expenditure calculator using the Mifflin-St Jeor equation with standard activity multipliers." },
+    { "@type": "FAQPage", "mainEntity": [
+      { "@type": "Question", "name": "Is the Mifflin-St Jeor equation accurate?",
+        "acceptedAnswer": { "@type": "Answer", "text": "In a 2005 systematic review by Frankenfield et al., Mifflin-St Jeor predicted resting metabolic rate within 10% of measured values in more non-obese and obese adults than the Harris-Benedict, Owen, or WHO equations. It is the best population-level starting estimate — still a starting estimate, which is why targets should be paired with a weekly review of real-world results." } },
+      { "@type": "Question", "name": "What calorie deficit is best for fat loss?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A moderate deficit of roughly 10-20% below maintenance (about 15% as a default) balances meaningful fat loss with muscle preservation, training quality, and adherence. Aggressive 30-40% deficits tend to cost lean mass and are harder to sustain beyond a few weeks." } },
+      { "@type": "Question", "name": "Should I eat back the calories I burn exercising?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Not if your activity multiplier already includes your training. Choosing 'moderately active (3-5 workouts/week)' counts those sessions in your TDEE. Eating them back a second time double-counts the burn and quietly erases your deficit." } },
+      { "@type": "Question", "name": "How often should I recalculate my TDEE?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Recalculate after every 4-5 kg of body-weight change — or better, skip the recalculation and adjust your target ±10% at a fixed weekly review based on your actual weight and waist trend. Your own records beat any equation after 3-4 weeks of data." } }
+    ] }
+  ]
+}
+</script>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root { --bg:#0a0a0f; --card:#0d0d16; --elev:#12121c; --text:#f4f4fa; --dim:#a0a0b4; --faint:#5a5a70;
+    --gold:#a259ff; --gold-hi:#cf9fff; --gold-lo:#7c3aed; --teal:#00c9a7; --line:rgba(255,255,255,.10); --ease:cubic-bezier(.16,1,.3,1); }
+  body { font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:var(--bg); color:var(--text); min-height:100vh; -webkit-font-smoothing:antialiased; }
+  ::selection { background:rgba(162,89,255,.30); }
+  .topbar { display:flex; align-items:center; justify-content:space-between; gap:14px; max-width:760px; margin:0 auto; padding:22px 22px 18px; border-bottom:1px solid var(--line); }
+  .brand { display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--text); }
+  .brand-logo { width:38px; height:38px; border-radius:10px; box-shadow:0 2px 16px rgba(0,201,167,.20); }
+  .wordmark b { font-size:15px; font-weight:800; letter-spacing:.18em; display:block; line-height:1.1; }
+  .wordmark b::after { content:' PROTOCOL'; font-weight:300; color:var(--dim); letter-spacing:.22em; }
+  .wordmark em { font-style:normal; font-size:8.5px; letter-spacing:.24em; color:var(--gold-lo); font-weight:600; }
+  .top-cta { font-size:12.5px; font-weight:600; text-decoration:none; color:var(--gold-hi); border:1px solid rgba(162,89,255,.35); border-radius:10px; padding:9px 16px; white-space:nowrap; }
+  .top-cta:hover { border-color:var(--gold); background:rgba(162,89,255,.08); }
+  main { max-width:760px; margin:0 auto; padding:clamp(28px,6vw,56px) 22px 40px; }
+  .badge { display:inline-flex; align-items:center; gap:9px; padding:8px 19px; border-radius:100px; font-size:10.5px; font-weight:700; letter-spacing:.19em; text-transform:uppercase; color:var(--teal); border:1px solid rgba(0,201,167,.30); }
+  .badge::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--teal); }
+  h1 { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(32px,5.5vw,48px); line-height:1.14; margin:26px 0 16px; }
+  h1 em { font-style:italic; color:var(--gold-hi); }
+  .sub { font-size:15.5px; font-weight:300; line-height:1.8; color:var(--dim); max-width:580px; }
+  .sub strong { color:var(--text); font-weight:600; }
+  .tool { margin-top:30px; background:var(--card); border:1px solid transparent; border-radius:20px; padding:clamp(22px,4vw,34px);
+    background:linear-gradient(var(--card),var(--card)) padding-box, linear-gradient(160deg, rgba(238,217,172,.22), rgba(238,217,172,.05) 42%, rgba(238,217,172,.13)) border-box; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .field label { display:block; font-size:10.5px; font-weight:700; color:var(--dim); text-transform:uppercase; letter-spacing:.11em; margin-bottom:9px; }
+  .field input, .field select { width:100%; padding:15px 16px; background:var(--elev); border:1px solid rgba(235,220,190,.10); border-radius:12px; color:var(--text); font-size:16px; font-family:'Inter',sans-serif; appearance:none; -webkit-appearance:none; }
+  .field select { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239a968c' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 16px center; padding-right:40px; }
+  .field input:focus, .field select:focus { outline:none; border-color:var(--gold); box-shadow:0 0 0 4px rgba(162,89,255,.12); }
+  .results { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:24px; }
+  .ecard { background:var(--elev); border:1px solid rgba(235,220,190,.08); border-radius:14px; padding:19px 18px; }
+  .ecard .el { font-size:10px; font-weight:700; letter-spacing:.13em; text-transform:uppercase; color:var(--faint); margin-bottom:9px; }
+  .ecard .ev { font-size:24px; font-weight:800; font-variant-numeric:tabular-nums; }
+  .ecard .ev span { font-size:11px; font-weight:500; color:var(--faint); }
+  .ecard .eu { font-size:11px; color:var(--dim); margin-top:6px; line-height:1.55; font-weight:300; }
+  .ecard.gold { border:1px solid transparent; background:linear-gradient(rgba(162,89,255,.06),rgba(162,89,255,.06)) padding-box, linear-gradient(150deg, rgba(238,217,172,.35), rgba(238,217,172,.08) 50%, rgba(238,217,172,.18)) border-box; }
+  .ecard.gold .ev { color:var(--gold-hi); }
+  .toolnote { font-size:11.5px; color:var(--faint); margin-top:16px; line-height:1.7; }
+  section.content { margin-top:48px; }
+  h2 { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(22px,3.6vw,30px); line-height:1.25; margin-bottom:14px; }
+  h2 em { font-style:italic; color:var(--gold-hi); }
+  .content p { font-size:14.5px; font-weight:300; line-height:1.85; color:var(--dim); margin:0 0 14px; max-width:680px; }
+  .content p b, .content p strong { color:var(--text); font-weight:600; }
+  .formula { background:var(--elev); border:1px solid rgba(235,220,190,.08); border-radius:12px; padding:16px 18px; font-size:14px; color:var(--text); margin:14px 0 18px; font-variant-numeric:tabular-nums; }
+  .formula span { color:var(--gold-hi); }
+  details { background:var(--card); border:1px solid rgba(235,220,190,.09); border-radius:14px; margin-bottom:10px; }
+  summary { cursor:pointer; list-style:none; padding:17px 19px; font-size:14px; font-weight:600; display:flex; justify-content:space-between; align-items:center; gap:14px; }
+  summary::-webkit-details-marker { display:none; }
+  summary::after { content:'+'; color:var(--gold); font-weight:700; font-size:17px; }
+  details[open] summary::after { transform:rotate(45deg); }
+  details p { padding:0 19px 17px; font-size:13px; color:var(--dim); line-height:1.75; margin:0; }
+  .reflist { margin:0; padding:0; list-style:none; }
+  .reflist li { position:relative; padding:12px 0 12px 40px; border-bottom:1px solid rgba(235,220,190,.06); font-size:12.5px; color:var(--dim); line-height:1.65; }
+  .reflist li b { color:var(--gold-lo); position:absolute; left:0; top:12px; font-size:11px; }
+  .reflist i { color:var(--dim); }
+  .reflist a { color:var(--gold); text-decoration:none; border-bottom:1px dotted rgba(162,89,255,.4); }
+  .cta-box { margin-top:44px; text-align:center; padding:34px 26px; border-radius:20px; border:1px solid transparent;
+    background:linear-gradient(180deg, rgba(162,89,255,.07), rgba(162,89,255,.02)) padding-box, linear-gradient(160deg, rgba(238,217,172,.5), rgba(238,217,172,.1) 40%, rgba(238,217,172,.3)) border-box; }
+  .cta-box .ck { font-size:10.5px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); }
+  .cta-box h3 { font-family:'Space Grotesk',sans-serif; font-size:24px; font-weight:700; margin:12px 0 8px; }
+  .cta-box p { font-size:13.5px; color:var(--dim); line-height:1.7; max-width:440px; margin:0 auto 20px; font-weight:300; }
+  .cta-btn { display:inline-block; padding:16px 30px; border-radius:13px; text-decoration:none; font-size:14.5px; font-weight:800; color:#fff; background:linear-gradient(135deg, var(--gold), var(--gold-lo)); }
+  .cta-tools { margin-top:22px; font-size:12px; letter-spacing:.05em; }
+  .cta-tools a { color:var(--gold); text-decoration:none; margin:0 8px; border-bottom:1px dotted rgba(162,89,255,.4); }
+  footer { max-width:760px; margin:0 auto; padding:28px 22px 42px; border-top:1px solid var(--line); }
+  footer p { font-size:11.5px; color:var(--faint); line-height:1.7; }
+  @media (max-width:640px){ .grid2{grid-template-columns:1fr;} .results{grid-template-columns:1fr;} .top-cta{display:none;} }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="https://flos-protocol.vercel.app/audit/">
+    <img class="brand-logo" src="../../icon-512.png" alt="FLOS Protocol logo" width="38" height="38">
+    <span class="wordmark"><b>FLOS</b><em>SCIENCE · METABOLISM · TRANSFORMATION</em></span>
+  </a>
+  <a class="top-cta" href="https://flos-protocol.vercel.app/audit/">← Back to the Audit</a>
+</header>
+
+<main>
+  <span class="badge">Free tool · Evidence-based</span>
+  <h1>TDEE <em>calculator</em></h1>
+  <p class="sub">Your <strong>Total Daily Energy Expenditure</strong> — the calories you actually burn in a day, computed with the Mifflin-St Jeor equation. This is the number every fat-loss or muscle-gain target starts from.</p>
+
+  <div class="tool">
+    <div class="grid2">
+      <div class="field"><label for="age">Age</label><input type="number" id="age" inputmode="numeric" placeholder="30" min="13" max="90" oninput="calc()"></div>
+      <div class="field"><label for="sex">Biological sex</label>
+        <select id="sex" onchange="calc()"><option value="male">Male</option><option value="female">Female</option></select></div>
+      <div class="field"><label for="height">Height (cm)</label><input type="number" id="height" inputmode="decimal" placeholder="175" min="120" max="230" oninput="calc()"></div>
+      <div class="field"><label for="weight">Weight (kg)</label><input type="number" id="weight" inputmode="decimal" placeholder="75" min="35" max="250" oninput="calc()"></div>
+      <div class="field" style="grid-column:1/-1;"><label for="act">Daily activity level</label>
+        <select id="act" onchange="calc()">
+          <option value="1.2">Sedentary — desk job, little structured exercise</option>
+          <option value="1.375">Lightly active — 1–3 workouts/week</option>
+          <option value="1.55" selected>Moderately active — 3–5 workouts/week</option>
+          <option value="1.725">Very active — 6–7 hard workouts/week</option>
+          <option value="1.9">Extra active — physical job + daily training</option>
+        </select></div>
+    </div>
+
+    <div class="results">
+      <div class="ecard"><div class="el">Resting baseline (BMR)</div><div class="ev" id="r-bmr">—</div><div class="eu">Calories at complete rest. Your floor — never your eating target.</div></div>
+      <div class="ecard gold"><div class="el">Real maintenance (TDEE)</div><div class="ev" id="r-tdee">—</div><div class="eu">Eat this much and your weight holds roughly steady at your activity level.</div></div>
+      <div class="ecard"><div class="el">Fat loss (−15%)</div><div class="ev" id="r-lose">—</div><div class="eu">Sustainable deficit — aggressive enough to move, kind enough to keep muscle.</div></div>
+      <div class="ecard"><div class="el">Lean build (+10%)</div><div class="ev" id="r-build">—</div><div class="eu">Small surplus — enough to build, small enough to stay lean. Hold at TDEE to recomp.</div></div>
+    </div>
+    <p class="toolnote">BMR = 10×kg + 6.25×cm − 5×age + 5 (men) or − 161 (women); TDEE = BMR × activity multiplier. Estimates computed locally in your browser — nothing is stored or sent anywhere.</p>
+  </div>
+
+  <section class="content">
+    <h2>How this number is <em>computed</em></h2>
+    <p>The Mifflin-St Jeor equation estimates your resting metabolism from the four variables that drive it. In a systematic review of predictive equations, it came within 10% of measured values in <b>more adults than Harris-Benedict, Owen, or the WHO formulas</b> — which is why dietetic literature treats it as the default starting estimate.<span style="color:var(--gold); font-size:11px;"> [1][2]</span></p>
+    <div class="formula">Men: <span>BMR = 10 × weight(kg) + 6.25 × height(cm) − 5 × age + 5</span><br>Women: <span>BMR = 10 × weight(kg) + 6.25 × height(cm) − 5 × age − 161</span></div>
+    <h2>Why maintenance is a <em>draft</em>, not a verdict</h2>
+    <p>Every calculator — this one included — produces a population-level estimate. Two people with identical stats can differ by hundreds of calories a day. That is not a reason to distrust numbers; it is a reason to <b>treat the number as version one and review it weekly against your own weight, waist, and performance trend</b>. Adjust ±10% at a fixed weekly review and within 3–4 weeks your target is more accurate than any equation could make it.</p>
+    <p>Protein does the protective work in any phase: around <b>1.6–2.2 g/kg/day</b> maximizes resistance-training gains in meta-analysis<span style="color:var(--gold); font-size:11px;"> [3][4]</span> — hit protein first, and let carbs and fats adjust around it. (Our <a href="../protein-target/" style="color:var(--gold);">protein target tool</a> computes your exact grams.)</p>
+  </section>
+
+  <section class="content">
+    <h2>Questions, <em>answered straight</em></h2>
+    <details><summary>Is the Mifflin-St Jeor equation accurate?</summary><p>Within ~10% of measured resting metabolism for most adults — the best of the standard equations<span style="color:var(--gold); font-size:11px;"> [1][2]</span>. But "accurate for a population" still means "approximately right for you," which is exactly why your target deserves a weekly review instead of blind faith.</p></details>
+    <details><summary>What deficit is best for fat loss?</summary><p>~10–20% below maintenance (this tool's −15% default). Big 30–40% slashes cost lean mass, training quality, and eventually adherence — the slow cut wins because you can actually hold it.</p></details>
+    <details><summary>Should I eat back exercise calories?</summary><p>Not if your activity multiplier already includes your workouts — that's double-counting. Pick the activity level that honestly matches your week and leave it there.</p></details>
+    <details><summary>How often should I recalculate?</summary><p>After every 4–5 kg of weight change — or simply adjust ±10% at your weekly review based on your trend. Your own 4 weeks of records outrank any formula.</p></details>
+  </section>
+
+  <section class="content">
+    <h2>References</h2>
+    <ol class="reflist">
+      <li><b>01</b>Mifflin MD, St Jeor ST, Hill LA, et al. "A new predictive equation for resting energy expenditure in healthy individuals." <i>American Journal of Clinical Nutrition</i>, 1990. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=A+new+predictive+equation+for+resting+energy+expenditure+in+healthy+individuals" target="_blank" rel="noopener">PubMed ↗</a></li>
+      <li><b>02</b>Frankenfield D, Roth-Yousey L, Compher C. "Comparison of predictive equations for resting metabolic rate in healthy nonobese and obese adults: a systematic review." <i>J Am Diet Assoc</i>, 2005. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Comparison+of+predictive+equations+for+resting+metabolic+rate+in+healthy+nonobese+and+obese+adults" target="_blank" rel="noopener">PubMed ↗</a></li>
+      <li><b>03</b>Morton RW, et al. "A systematic review, meta-analysis and meta-regression of the effect of protein supplementation on resistance training-induced gains." <i>Br J Sports Med</i>, 2018. <a href="https://doi.org/10.1136/bjsports-2017-097608" target="_blank" rel="noopener">doi.org ↗</a></li>
+      <li><b>04</b>Jäger R, et al. "International Society of Sports Nutrition Position Stand: protein and exercise." <i>JISSN</i>, 2017. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=International+Society+of+Sports+Nutrition+Position+Stand+protein+and+exercise" target="_blank" rel="noopener">PubMed ↗</a></li>
+    </ol>
+  </section>
+
+  <div class="cta-box">
+    <div class="ck">This is one pillar of four</div>
+    <h3>Calories are <em>Output</em>. What about the other three?</h3>
+    <p>Flow, Load, and Sustain decide whether this number ever becomes a result. Score your whole system in 90 seconds — free, instant.</p>
+    <a class="cta-btn" href="https://flos-protocol.vercel.app/audit/?utm_source=tool&utm_medium=tdee">Take the Readiness Audit →</a>
+    <div class="cta-tools">More free tools: <a href="../rpe-scale/">RPE Scale</a> · <a href="../protein-target/">Protein Target</a></div>
+  </div>
+</main>
+
+<footer><p>Educational estimates from published equations — not medical advice, diagnosis, or treatment. Consult a physician or registered dietitian before changing your diet or training. © 2026 FLOS Protocol by MJRevz.</p></footer>
+
+<script>
+function num(id){ const v = parseFloat(document.getElementById(id).value); return isFinite(v) ? v : null; }
+function fmt(n){ return n.toLocaleString() + ' <span>kcal</span>'; }
+function calc(){
+  const age = num('age'), h = num('height'), w = num('weight');
+  const sex = document.getElementById('sex').value;
+  const act = parseFloat(document.getElementById('act').value);
+  if (!age || !h || !w || age < 13 || age > 90 || h < 120 || h > 230 || w < 35 || w > 250) {
+    ['r-bmr','r-tdee','r-lose','r-build'].forEach(id => document.getElementById(id).innerHTML = '—');
+    return;
+  }
+  const bmr = 10*w + 6.25*h - 5*age + (sex === 'male' ? 5 : -161);
+  const tdee = bmr * act;
+  document.getElementById('r-bmr').innerHTML   = fmt(Math.round(bmr));
+  document.getElementById('r-tdee').innerHTML  = fmt(Math.round(tdee));
+  document.getElementById('r-lose').innerHTML  = fmt(Math.round(tdee*0.85));
+  document.getElementById('r-build').innerHTML = fmt(Math.round(tdee*1.10));
+}
+calc();
+</script>
+</body>
+</html>
