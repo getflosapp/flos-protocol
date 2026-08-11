@@ -333,7 +333,7 @@ footer p{font-size:11px;color:var(--dim);line-height:1.8;max-width:560px;margin:
   <!-- ============ STEP 0 · HERO ============ -->
   <div class="step hero-sec active" id="step-0">
     <div class="brandrow">
-      <img class="logochip" src="/icon-512.png" alt="FLOS Protocol logo" width="38" height="38">
+      <div class="logochip">F</div>
       <div class="brandname">FLOS PROTOCOL</div>
       <a class="audit-home" href="/" aria-label="FLOS Protocol home">← FLOS Home</a>
     </div>
@@ -806,7 +806,6 @@ const CONFIG = {
 const LS_KEY = 'flosAudit.v1';
 const BL_KEY = 'flosAudit.baseline';
 const SID = Math.random().toString(36).slice(2) + Date.now().toString(36);
-const LOGO_IMG = new Image(); LOGO_IMG.src = '/icon-512.png';
 const STEPS_WITH_KEYS = { 2:['flow1','flow2','flow3'], 3:['load1','load2','load3'], 4:['out1','out2','activity'], 5:['sus1','sus2','sus3'], 6:['goal','friction'] };
 
 const state = { step: 0, bio: {}, answers: {}, contact: {}, result: null, baseline: null };
@@ -1245,15 +1244,11 @@ function downloadScoreCard(){
   g = x.createRadialGradient(880,900,40, 880,900,560); g.addColorStop(0,'rgba(0,201,167,.24)'); g.addColorStop(1,'rgba(0,201,167,0)');
   x.fillStyle = g; x.fillRect(0,0,S,S);
 
-  // brand chip — real diamond logo (gradient-F fallback if image not ready)
-  if (LOGO_IMG.complete && LOGO_IMG.naturalWidth) {
-    x.save(); rr(x,70,64,76,76,20); x.clip(); x.drawImage(LOGO_IMG,70,64,76,76); x.restore();
-  } else {
-    const lg = x.createLinearGradient(70,70,150,150); lg.addColorStop(0,'#a259ff'); lg.addColorStop(1,'#7c3aed');
-    x.fillStyle = lg; rr(x,70,64,76,76,20); x.fill();
-    x.fillStyle = '#fff'; x.font = '700 42px "Space Grotesk", system-ui, sans-serif';
-    x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText('F', 108, 104);
-  }
+  // brand chip
+  const lg = x.createLinearGradient(70,70,150,150); lg.addColorStop(0,'#a259ff'); lg.addColorStop(1,'#7c3aed');
+  x.fillStyle = lg; rr(x,70,64,76,76,20); x.fill();
+  x.fillStyle = '#fff'; x.font = '700 42px "Space Grotesk", system-ui, sans-serif';
+  x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText('F', 108, 104);
   x.textAlign = 'left'; x.fillStyle = 'rgba(244,244,250,.55)'; x.font = '700 22px "Space Grotesk", system-ui, sans-serif';
   x.fillText('F L O S   R E A D I N E S S   A U D I T', 168, 104);
 
@@ -1323,5 +1318,5 @@ document.getElementById('yr').textContent = new Date().getFullYear();
 document.getElementById('yr2').textContent = new Date().getFullYear();
 checkSaved();
 </script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a297eb5aef615547',t:'MTc4NjQ1ODQyOA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
