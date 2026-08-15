@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>The 90-Day Readiness Audit — Free 4-Pillar Fitness Self-Assessment | FLOS Protocol</title>
-<meta name="description" content="Free 90-second FLOS Readiness Audit: 14 questions scored across Flow, Load, Output & Sustain. Unlock your score /100, weakest pillar, and exact calorie + protein targets — instantly on this page." />
+<meta name="description" content="Free 90-second FLOS Readiness Audit: 15 questions scored across Flow, Load, Output & Sustain. Unlock your score /100, weakest pillar, and exact calorie + protein targets — instantly on this page." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://flos-protocol.vercel.app/audit/" />
 <meta property="og:type" content="website" />
@@ -28,9 +28,9 @@
   "@type": "FAQPage",
   "mainEntity": [
     { "@type": "Question", "name": "Is the FLOS Readiness Audit really free?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. The audit is a free educational self-assessment. You answer 14 questions, enter your email to unlock your full pillar breakdown instantly on the page, and a copy of your report is emailed to you. No card is required." } },
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. The audit is a free educational self-assessment. You answer 15 questions, enter your email to unlock your full pillar breakdown instantly on the page, and a copy of your report is emailed to you. No card is required." } },
     { "@type": "Question", "name": "How is my FLOS Readiness Score calculated?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Your answers are scored across four pillars — Flow, Load, Output and Sustain. Each pillar is normalized to 25 points for a total score out of 100. Your lowest pillar is identified as the weakest link your effort is leaking through, and your verdict and recommendation follow from that score." } },
+      "acceptedAnswer": { "@type": "Answer", "text": "Your answers are scored across four pillars — Flow, Load, Output and Sustain. Each pillar is normalized to 25 points for a total score out of 100. If one pillar is genuinely lower than the rest, it is named as the weakest link your effort is leaking through. If two or more are tied at the bottom, the audit reports the tie instead of picking one, and if all four are level it says there is no single weakest pillar — then still gives you one starting action. Your verdict and recommendation follow from the score." } },
     { "@type": "Question", "name": "Are the calorie and protein targets medical advice?",
       "acceptedAnswer": { "@type": "Answer", "text": "No. Targets are population-level estimates from the Mifflin–St Jeor equation and standard activity multipliers, with protein derived from published sports-nutrition meta-analyses. They are educational starting points to refine with weekly reviews — not medical advice, diagnosis, or treatment." } },
     { "@type": "Question", "name": "What is the FLOS Protocol?",
@@ -343,7 +343,7 @@ footer p{font-size:11px;color:var(--dim);line-height:1.8;max-width:560px;margin:
     <h1>Which pillar is <em>quietly</em> canceling your progress?</h1>
     <p class="sub">Most people don't fail because they're lazy. They fail because <strong>their system is scattered</strong> — workouts in one app, meals in a note, recovery on vibes, no weekly review. This audit scores your system across the four pillars that decide your next 90 days.</p>
     <div class="statpills">
-      <span><b>14</b> questions</span>
+      <span><b>15</b> questions</span>
       <span>≈ <b>90</b> seconds</span>
       <span><b>Instant</b> unlock</span>
       <span><b>Free</b> forever</span>
@@ -492,6 +492,14 @@ footer p{font-size:11px;color:var(--dim);line-height:1.8;max-width:560px;margin:
         <button type="button" class="opt" data-val="0" data-label="0–2 days" onclick="pick(this)"><span class="ix">01</span><span>0–2 days<small>Protein is whatever happens</small></span></button>
         <button type="button" class="opt" data-val="1" data-label="3–5 days" onclick="pick(this)"><span class="ix">02</span><span>3–5 days<small>Weekdays yes, weekends no</small></span></button>
         <button type="button" class="opt" data-val="2" data-label="6–7 days" onclick="pick(this)"><span class="ix">03</span><span>6–7 days<small>Protein first. Always.</small></span></button>
+      </div>
+    </div>
+    <div class="qcard">
+      <div class="qlabel">How do you know how much you actually ate on a given day?</div>
+      <div class="opts" data-key="out3">
+        <button type="button" class="opt" data-val="0" data-label="I don't — I reconstruct it from memory" onclick="pick(this)"><span class="ix">01</span><span>I don't really know<small>Reconstructed from memory, if at all</small></span></button>
+        <button type="button" class="opt" data-val="1" data-label="I eyeball portions and estimate" onclick="pick(this)"><span class="ix">02</span><span>I eyeball it<small>Portion estimates and rough mental math</small></span></button>
+        <button type="button" class="opt" data-val="2" data-label="I weigh or log intake most days" onclick="pick(this)"><span class="ix">03</span><span>I log or weigh it<small>Most days are actually recorded</small></span></button>
       </div>
     </div>
     <div class="qcard">
@@ -741,11 +749,11 @@ footer p{font-size:11px;color:var(--dim);line-height:1.8;max-width:560px;margin:
     <h2 class="edh" style="margin-top:40px">Questions, <em style="color:var(--primary);font-style:italic">answered straight</em></h2>
     <details>
       <summary>Is the FLOS Readiness Audit really free?</summary>
-      <div class="ans">Yes. The audit is a free educational self-assessment. You answer 14 questions, enter your email to unlock your full pillar breakdown instantly on the page, and a copy of your report is emailed to you. No card is required.</div>
+      <div class="ans">Yes. The audit is a free educational self-assessment. You answer 15 questions, enter your email to unlock your full pillar breakdown instantly on the page, and a copy of your report is emailed to you. No card is required.</div>
     </details>
     <details>
       <summary>How is my FLOS Readiness Score calculated?</summary>
-      <div class="ans">Your answers are scored across four pillars — Flow, Load, Output and Sustain. Each pillar is normalized to 25 points for a total score out of 100. Your lowest pillar is identified as the weakest link your effort is leaking through, and your verdict and recommendation follow from that score.</div>
+      <div class="ans">Your answers are scored across four pillars — Flow, Load, Output and Sustain. Each pillar is normalized to 25 points for a total score out of 100. If one pillar is genuinely lower than the rest, it is named as the weakest link your effort is leaking through. If two or more are tied at the bottom, the audit reports the tie instead of quietly picking one — and if all four are level, it tells you there is no single weakest pillar rather than inventing one. In every case you still leave with one specific action to start with. Your verdict and recommendation follow from the score.</div>
     </details>
     <details>
       <summary>Are the calorie and protein targets medical advice?</summary>
@@ -807,9 +815,15 @@ const CONFIG = {
 
 const LS_KEY = 'flosAudit.v1';
 const BL_KEY = 'flosAudit.baseline';
+/* Bumped when the scoring scale itself changes. v2 = Output rebalanced from
+   2 questions (raw max 4) to 3 questions (raw max 6), equalizing all four
+   pillars. A v1 baseline is NOT comparable to a v2 score — the Output axis
+   changed underneath it — so the delta card suppresses cross-version
+   comparisons rather than reporting movement the user did not make. */
+const SCALE_VERSION = 2;
 const SID = Math.random().toString(36).slice(2) + Date.now().toString(36);
 const LOGO_IMG = new Image(); LOGO_IMG.src = '/icon-512.png';
-const STEPS_WITH_KEYS = { 2:['flow1','flow2','flow3'], 3:['load1','load2','load3'], 4:['out1','out2','activity'], 5:['sus1','sus2','sus3'], 6:['goal','friction'] };
+const STEPS_WITH_KEYS = { 2:['flow1','flow2','flow3'], 3:['load1','load2','load3'], 4:['out1','out2','out3','activity'], 5:['sus1','sus2','sus3'], 6:['goal','friction'] };
 
 const state = { step: 0, bio: {}, answers: {}, contact: {}, result: null, baseline: null };
 let _pingedBegin = false;
@@ -817,17 +831,80 @@ let _pingedBegin = false;
 /* ============================================================
    SCORING + ENERGY ENGINE  (verified 1:1 against production)
    ============================================================ */
-const PILLARS = { flow:['flow1','flow2','flow3'], load:['load1','load2','load3'], output:['out1','out2'], sustain:['sus1','sus2','sus3'] };
+/* All four pillars now carry 3 questions x 0-2 pts = 6 raw points each.
+   Output previously had only 2 questions, which gave every Output answer
+   1.5x the weight of any other pillar's answer, coarser granularity
+   (0/6/13/19/25 vs 0/4/8/13/17/21/25) and a structurally inflated rate of
+   being named weakest (28.2% vs 23.9%). Equal question counts remove that
+   artifact so a weakest-pillar call reflects the user, not the instrument. */
+const PILLARS = { flow:['flow1','flow2','flow3'], load:['load1','load2','load3'], output:['out1','out2','out3'], sustain:['sus1','sus2','sus3'] };
 function pillarScore(keys, rawMax){
   const pts = keys.reduce((s,k)=> s + parseInt(state.answers[k].value,10), 0);
   return { pts, norm: Math.round((pts/rawMax)*25) };
 }
+
+/* ------------------------------------------------------------------
+   WEAKEST-PILLAR RESOLVER — tie-aware, honest by design
+   ------------------------------------------------------------------
+   A pillar may only be called "weakest" when it is genuinely lower
+   than the others. Ties, flat profiles and perfect profiles are
+   reported as what they are, never silently collapsed onto the first
+   object key (the old `<=` reduce always answered "flow").
+
+   Comparison uses raw fractions, not the rounded /25 values, so the
+   different granularity of Output (raw 0-4) and the other pillars
+   (raw 0-6) can never invent or hide a tie.
+
+   FOCUS_ORDER decides which of several tied pillars to start with:
+   ordered by cost-to-install, cheapest first, so a tied or flat user
+   still leaves with one unambiguous action instead of four.
+------------------------------------------------------------------ */
+const FOCUS_ORDER = ['flow','output','load','sustain'];
+const PILLAR_NAME = { flow:'Flow', load:'Load', output:'Output', sustain:'Sustain' };
+const PILLAR_FIX = {
+  flow:    'score your energy 1&ndash;10 every morning and set one focus intent before the day starts &mdash; sixty seconds',
+  load:    'log an RPE number after every session this week &mdash; one number per session',
+  output:  'use the calorie and protein targets in this report for seven days &mdash; protein first, always',
+  sustain: 'run one 10-minute weekly review &mdash; what worked, what changes next week'
+};
+
+function resolveWeakest(fr){
+  const EPS  = 1e-9;
+  const keys = Object.keys(fr);
+  const min  = Math.min.apply(null, keys.map(k=>fr[k]));
+  const max  = Math.max.apply(null, keys.map(k=>fr[k]));
+  const tied = keys.filter(k => Math.abs(fr[k] - min) < EPS);
+  const focus = FOCUS_ORDER.find(k => tied.indexOf(k) > -1) || tied[0];
+
+  let mode;
+  if (tied.length === keys.length){
+    if (Math.abs(max - 1) < EPS) mode = 'perfect'; // every pillar maxed — no leak exists
+    else if (min < EPS)          mode = 'zero';    // nothing measured at all
+    else                         mode = 'flat';    // evenly balanced, partial
+  } else {
+    mode = tied.length > 1 ? 'tie' : 'single';
+  }
+  return { mode, tied, focus };
+}
+
+function joinNames(keys){
+  const n = keys.map(k => PILLAR_NAME[k]);
+  if (n.length === 1) return n[0];
+  if (n.length === 2) return n[0] + ' and ' + n[1];
+  return n.slice(0,-1).join(', ') + ' and ' + n[n.length-1];
+}
 function compute(){
   const flow = pillarScore(PILLARS.flow,6), load = pillarScore(PILLARS.load,6),
-        output = pillarScore(PILLARS.output,4), sustain = pillarScore(PILLARS.sustain,6);
+        output = pillarScore(PILLARS.output,6), sustain = pillarScore(PILLARS.sustain,6);
   const pillars = { flow:flow.norm, load:load.norm, output:output.norm, sustain:sustain.norm };
   const total = flow.norm + load.norm + output.norm + sustain.norm;
-  const weakest = Object.keys(pillars).reduce((a,b)=> pillars[a] <= pillars[b] ? a : b);
+
+  // Compare on raw fractions (0..1), never on the rounded /25 display values.
+  const fractions = { flow:flow.pts/6, load:load.pts/6, output:output.pts/6, sustain:sustain.pts/6 };
+  const weak = resolveWeakest(fractions);
+  const weakest = weak.focus;      // the single pillar to act on (kept for payload/back-compat)
+  const weakMode = weak.mode;      // 'single' | 'tie' | 'flat' | 'zero' | 'perfect'
+  const weakTied = weak.tied;      // every pillar sharing the lowest score
 
   const { age, height, weight, sex } = state.bio;
   const actFactor = parseFloat(state.answers.activity.value);
@@ -855,7 +932,7 @@ function compute(){
   else if (total <= 80) { verdict='builder';    tier='pro'; }
   else                  { verdict='command';    tier='elite'; }
 
-  state.result = { pillars, total, weakest, energy, verdict, tier };
+  state.result = { pillars, fractions, total, weakest, weakMode, weakTied, energy, verdict, tier };
   return state.result;
 }
 
@@ -871,6 +948,42 @@ const LEAKS = {
   output:  { title:'Output is your weakest pillar',  copy:'Your effort leaks out through <strong>unmanaged fuel</strong>. Training without knowing your calorie and protein numbers is like loading a truck with no cargo list — work happens, results don\'t. Fix: use the targets in this report for 7 days. Protein first, always. Track the number, not the vibe.' },
   sustain: { title:'Sustain is your weakest pillar', copy:'Your effort leaks out through <strong>recovery and review</strong>. Sleep, hydration, and a weekly review decide whether this week\'s work compounds or evaporates. Fix: one 10-minute weekly review — what worked, what changes. That single habit is the engine of the entire FLOS protocol.' }
 };
+
+/* ------------------------------------------------------------------
+   TIE / FLAT / ZERO / PERFECT COPY
+   The audit never claims a weakest pillar it cannot evidence. When
+   pillars are level it says so, then still hands over ONE next action.
+------------------------------------------------------------------ */
+function leakContent(r){
+  const focusName = PILLAR_NAME[r.weakest];
+  const fix = PILLAR_FIX[r.weakest];
+
+  if (r.weakMode === 'zero'){
+    return {
+      title: 'No weakest pillar — nothing is being measured yet',
+      copy:  'Every pillar scored <strong>0 / 25</strong>, so there is no weakest link to name. That is not a failing grade on you — it is an honest reading that <strong>none of the four signals is visible yet</strong>. Nothing is being tracked, so nothing can be compared, and any pillar we singled out here would be a guess dressed up as a diagnosis.<br><br>This is actually the cleanest possible starting point: there is no bad system to undo. Start with <strong>' + focusName + '</strong> because it is the cheapest to install — ' + fix + '. Retake this audit in seven days and you will have a real weakest pillar, backed by real data.'
+    };
+  }
+  if (r.weakMode === 'perfect'){
+    return {
+      title: 'No weakest pillar — every pillar is maxed',
+      copy:  'All four pillars scored <strong>25 / 25</strong>. There is no leak to report, and naming one would be dishonest. Your basics are not just habits, they are <strong>a system</strong>.<br><br>At this level the next gain does not come from fixing a weak pillar — it comes from <strong>protocol design</strong>: planned phases, deliberate progression, and cycles built for a specific outcome. Keep the weekly review running; it is the thing protecting this score.'
+    };
+  }
+  if (r.weakMode === 'flat'){
+    return {
+      title: 'No single weakest pillar — your system is evenly balanced',
+      copy:  'All four pillars scored the same. There is no outlier, so there is <strong>no single leak to name</strong> — your system is uniformly partial rather than lopsided. That is a genuinely different problem from having one weak link, and it deserves a different answer.<br><br>Do not try to lift all four at once; that is how balanced systems stall. Pick <strong>' + focusName + '</strong> first because it is the cheapest to install — ' + fix + '. Raise one pillar, retake the audit, and let the next weakest link reveal itself.'
+    };
+  }
+  if (r.weakMode === 'tie'){
+    return {
+      title: joinNames(r.weakTied) + ' are tied as your weakest pillars',
+      copy:  '<strong>' + joinNames(r.weakTied) + '</strong> scored identically at the bottom, so this report will not pretend one of them is worse than the other. They are leaking at the same rate.<br><br>Fixing both at once splits your attention and usually means neither sticks. Start with <strong>' + focusName + '</strong> — ' + fix + '. Once that pillar is holding, the tie breaks on its own and the next target becomes obvious.'
+    };
+  }
+  return { title: LEAKS[r.weakest].title, copy: LEAKS[r.weakest].copy };
+}
 const TIERS = {
   core:  { name:'FLOS Core',  price:'$27', copy:'Your score says: don\'t overload — install basics. <strong>Core gives you the protected FLOS app and a guided first-week launch</strong> so you start tracked from day one without drowning in features. The 90-day cycle begins the moment you log your first morning.' },
   pro:   { name:'FLOS Pro',   price:'$67', copy:'Your score says: you don\'t need more information — you need <strong>a complete loop</strong>. Pro is the full 12-week command system: the protected app, playbook, daily tracker, weekly review tools, macro and RPE references, and the 90-day scorecard that turns your numbers into decisions.' },
@@ -1061,8 +1174,14 @@ function sendLead(){
     age: state.bio.age, sex: state.bio.sex, height_cm: state.bio.height, weight_kg: state.bio.weight,
     activity: r.energy.actLabel, goal: state.answers.goal.label, friction: state.answers.friction.label,
     answers: Object.fromEntries(Object.entries(state.answers).map(([k,v])=>[k, v.value])),
+    scale_version: SCALE_VERSION,             // bump = scoring scale changed; older rows are not comparable
     score_flow: r.pillars.flow, score_load: r.pillars.load, score_output: r.pillars.output, score_sustain: r.pillars.sustain,
-    score_total: r.total, weakest_pillar: r.weakest, verdict: VERDICTS[r.verdict].name, recommended_tier: TIERS[r.tier].name,
+    score_total: r.total,
+    weakest_pillar: (r.weakMode === 'zero' || r.weakMode === 'perfect' || r.weakMode === 'flat') ? 'none' : r.weakest,
+    weakest_mode: r.weakMode,                 // single | tie | flat | zero | perfect
+    weakest_tied: r.weakTied.join('|'),       // every pillar sharing the lowest score
+    focus_pillar: r.weakest,                  // the one action we actually recommended
+    verdict: VERDICTS[r.verdict].name, recommended_tier: TIERS[r.tier].name,
     bmr: r.energy.bmr, tdee: r.energy.tdee, calorie_target: r.energy.target, protein_target_g: r.energy.protein,
     utm_source: q.get('utm_source')||'', utm_medium: q.get('utm_medium')||'', utm_campaign: q.get('utm_campaign')||'',
     page: location.href
@@ -1109,11 +1228,19 @@ function renderResults(){
     const bar = document.getElementById('bar-' + p);
     if (v <= 10) bar.classList.add('low');
     setTimeout(()=>{ bar.style.width = Math.max(pct,3) + '%'; }, reduced ? 0 : 200 + i*140);
-    document.querySelector('#row-' + p + ' .ptag').style.display = (p === r.weakest) ? 'inline-block' : 'none';
+    // Tag every pillar that genuinely shares the lowest score — and tag
+    // none at all when there is no weakest pillar to point at.
+    const tag = document.querySelector('#row-' + p + ' .ptag');
+    const tagged = (r.weakMode === 'zero' || r.weakMode === 'perfect' || r.weakMode === 'flat')
+      ? false
+      : r.weakTied.indexOf(p) > -1;
+    tag.textContent = (r.weakMode === 'tie') ? 'TIED LOWEST' : 'WEAKEST';
+    tag.style.display = tagged ? 'inline-block' : 'none';
   });
 
-  document.getElementById('rx-title').textContent = LEAKS[r.weakest].title;
-  document.getElementById('rx-copy').innerHTML = LEAKS[r.weakest].copy;
+  const leak = leakContent(r);
+  document.getElementById('rx-title').textContent = leak.title;
+  document.getElementById('rx-copy').innerHTML = leak.copy;
 
   const fmt = n => n.toLocaleString();
   document.getElementById('ev-bmr').innerHTML = fmt(r.energy.bmr) + ' <span>kcal</span>';
@@ -1156,6 +1283,7 @@ function saveBaseline(){
     const r = state.result;
     localStorage.setItem(BL_KEY, JSON.stringify({
       email: state.contact.email,
+      sv: SCALE_VERSION,            // scoring-scale version this baseline was measured on
       total: r.total, pillars: r.pillars, weakest: r.weakest,
       verdict: r.verdict, tier: r.tier, at: new Date().toISOString()
     }));
@@ -1165,6 +1293,14 @@ function renderDelta(){
   try{
     const bl = state.baseline || JSON.parse(localStorage.getItem(BL_KEY) || 'null');
     if (!bl || !bl.pillars) return;
+    // A baseline captured on an older scoring scale is not comparable to a
+    // v2 score: the Output axis was rebuilt (2 questions -> 3). Showing a
+    // delta across that change would report movement the user never made,
+    // so it is suppressed and the new score simply becomes the baseline.
+    if (Number(bl.sv || 1) !== SCALE_VERSION){
+      ping('delta','scale-reset');
+      return;
+    }
     const r = state.result;
     if (bl.email && state.contact.email && bl.email === state.contact.email && bl.at === undefined){ /* same-submission guard */ }
     const rows = [['Total score', bl.total, r.total, 100]]
@@ -1203,6 +1339,9 @@ function renderDelta(){
           const b = data.baseline;
           state.baseline = {
             email: email,
+            // Rows written before the Output rebalance carry no scale_version;
+            // they default to 1 and renderDelta() will decline to compare them.
+            sv: Number(b.scale_version || 1),
             total: Number(b.score_total),
             pillars: { flow:Number(b.score_flow), load:Number(b.score_load), output:Number(b.score_output), sustain:Number(b.score_sustain) },
             weakest: b.weakest_pillar, verdict: b.verdict, tier: b.recommended_tier
@@ -1219,8 +1358,14 @@ function renderDelta(){
 function shareText(){
   const r = state.result || compute();
   const url = CONFIG.SITE_URL + '?utm_source=scorecard&utm_medium=share';
+  let line;
+  if (r.weakMode === 'perfect')      line = 'All four pillars maxed — no weak link left to fix.';
+  else if (r.weakMode === 'zero')    line = 'Nothing measured yet — starting from a clean slate.';
+  else if (r.weakMode === 'flat')    line = 'All four pillars level — no single weak link, just an even system.';
+  else if (r.weakMode === 'tie')     line = 'Tied weakest: ' + r.weakTied.map(k=>k.toUpperCase()).join(' + ') + ' — that is where my effort has been leaking.';
+  else                               line = 'Weakest pillar: ' + r.weakest.toUpperCase() + ' — that is where my effort has been leaking.';
   return 'My FLOS Readiness Score: ' + r.total + '/100 — "' + VERDICTS[r.verdict].name + '".\n' +
-         'Weakest pillar: ' + r.weakest.toUpperCase() + ' — that is where my effort has been leaking.\n' +
+         line + '\n' +
          'Which pillar is quietly canceling YOUR progress? Free 90-second audit:\n' + url;
 }
 function setupShareLinks(){
@@ -1280,18 +1425,23 @@ function downloadScoreCard(){
   // pillar bars
   const names = { flow:'FLOW', load:'LOAD', output:'OUTPUT', sustain:'SUSTAIN' };
   let y = 740;
+  const cardFlag = (r.weakMode === 'zero' || r.weakMode === 'perfect' || r.weakMode === 'flat')
+    ? []
+    : r.weakTied;
+  const cardLabel = (r.weakMode === 'tie') ? '  ·  TIED LOWEST' : '  ·  WEAKEST';
   Object.keys(names).forEach(p=>{
     const val = r.pillars[p], wRatio = Math.max(val/25, .04);
+    const isWeak = cardFlag.indexOf(p) > -1;
     x.textAlign = 'left';
-    x.fillStyle = p === r.weakest ? '#ff8a9e' : 'rgba(244,244,250,.75)';
+    x.fillStyle = isWeak ? '#ff8a9e' : 'rgba(244,244,250,.75)';
     x.font = '700 24px "Space Grotesk", system-ui, sans-serif';
-    x.fillText(names[p] + (p === r.weakest ? '  ·  WEAKEST' : ''), 110, y - 14);
+    x.fillText(names[p] + (isWeak ? cardLabel : ''), 110, y - 14);
     x.textAlign = 'right';
     x.fillStyle = 'rgba(244,244,250,.55)'; x.font = '700 24px "Space Grotesk", system-ui, sans-serif';
     x.fillText(val + '/25', S - 110, y - 14);
     x.fillStyle = 'rgba(255,255,255,.07)'; rr(x, 110, y, S - 220, 16, 8); x.fill();
     const bg2 = x.createLinearGradient(110,y,110 + (S-220)*wRatio,y);
-    if (p === r.weakest){ bg2.addColorStop(0,'#ff5d7a'); bg2.addColorStop(1,'#ff8a9e'); }
+    if (isWeak){ bg2.addColorStop(0,'#ff5d7a'); bg2.addColorStop(1,'#ff8a9e'); }
     else { bg2.addColorStop(0,'#a259ff'); bg2.addColorStop(1,'#00c9a7'); }
     x.fillStyle = bg2; rr(x, 110, y, (S - 220) * wRatio, 16, 8); x.fill();
     y += 82;
